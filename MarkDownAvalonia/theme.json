@@ -1,0 +1,67 @@
+{
+  "bodyForeground": "#FFFFFF",
+  "bodyBackground": "#313335",
+  
+  "buttonBackground": "Transparent",
+  "buttonForeground": "#FFFFFF",
+  "logoButtonBackground": "Transparent",
+  "logoButtonForeground": "Black",
+  
+  "foreground": "#FFFFFF",
+  "background": "Transparent",
+  "activecolor": "#1685ED",
+  "aactivecolor": "#ff33cc",
+  
+  "itemPanelForeground": "Silver",
+  "itemPanelBackground": "#312f2f",
+  "itemPanelFocusForeground": "White",
+  "itemPanelFocusBackground": "#1685ED",
+  
+  "editorPanelBackground": "#FEF6E1",
+  "editorPanelForeground": "Black",
+  "editorPanelSelectionForeground": "White",
+  "editorPanelSelectionBackground": "#303030",
+  "editorPanelCaretBrush": "Black",
+  
+  "previewPanelBackground": "White",
+  "markdownUrlForeground": "#6795b5",
+  "markdownUrlHoverForeground": "#6795b5",
+  "markdownLineForeground": "#DDD",
+
+  "markdownH1Foreground": "#1685ED",
+  "markdownH1Background": "TransParent",
+  "markdownH2Foreground": "#1685ED",
+  "markdownH2Background": "TransParent",
+  "markdownH3Foreground": "#1685ED",
+  "markdownH3Background": "TransParent",
+  "markdownH4Foreground": "#1685ED",
+  "markdownH4Background": "TransParent",
+  "markdownH5Foreground": "#1685ED",
+  "markdownH5Background": "TransParent",
+  "markdownH6Foreground": "#1685ED",
+  "markdownH6Background": "TransParent",
+
+  "markdownTableBorderBrush": "Silver",
+  "markdownTableHeadForeground": "Black",
+  "markdownTableHeadBackground": "#EFF3F5",
+  "markdownTableOddRowForeground": "Black",
+  "markdownTableOddRowBackground": "White",
+  "markdownTableEvenRowForeground": "Black",
+  "markdownTableEvenRowBackground": "#F7F7F7",
+  
+  "markdownQuoteForeground": "#c7254e",
+  "markdownQuoteBackground": "#f9f2f4",
+
+  "markdownCodeBlockForeground": "black",
+  "markdownCodeBlockBackground": "#F2F2F2",
+  
+  "markdownBlockQuoteBackground": "#EEF0F4",
+  "markdownBlockQuoteHeadBrush": "#DDDFE4",
+  
+  "markdownNoteForeground": "White",
+  "markdownNoteBackground": "#C75049",
+  
+  "markdownForeground": "Black"
+}
+
+

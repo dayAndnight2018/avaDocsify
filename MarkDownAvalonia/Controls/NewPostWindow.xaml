@@ -1,0 +1,86 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="420" d:DesignHeight="360"
+        x:Class="MarkDownAvalonia.Controls.NewPostWindow"
+        Title="New Post" Background="white" SystemDecorations="BorderOnly" WindowStartupLocation="CenterOwner">
+        <Window.Styles>
+                <Style Selector="Button.tab">
+                        <Setter Property="Background" Value="#303030"></Setter>
+                        <Setter Property="Foreground" Value="white" />
+                        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        <Setter Property="BorderThickness" Value="0"></Setter>
+                </Style>
+        </Window.Styles>
+        <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="#303030">
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                <Border HorizontalAlignment="Center" BorderThickness="1" BorderBrush="white" Width="30" Height="30" CornerRadius="15" Margin="10 5" Background="white">
+                                        <Label FontSize="12" Foreground="black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">MD</Label>
+                                </Border>
+                                <Label Name="title" VerticalAlignment="Center" Foreground="white" FontSize="16">New Post</Label>
+                        </StackPanel>
+                        <Button Grid.Column="2" Width="30" Height="30" Foreground="white" Background="#C75049" BorderThickness="0" Margin="10 0" Click="CloseWindow">X</Button>
+                </Grid>
+                
+                <TextBox MinWidth="300" Name="content" Grid.Row="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Microsoft YaHei,Simsun,华文宋体,苹方,苹方-简,宋体-简" Watermark="type post title here">
+                        
+                </TextBox>
+                
+                
+                <Grid Grid.Row="2">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 20 10 5">
+                                <Button Grid.Column="2" MinWidth="45" MinHeight="20" BorderThickness="1" Margin="10 5" Padding="10" Background="#C75049" Foreground="white">confirm</Button>
+                        </StackPanel>
+                </Grid>
+                        
+                <!-- 
+                <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="0" Orientation="Vertical" Background="#303030">
+                        <Border HorizontalAlignment="Center" BorderThickness="1" BorderBrush="white" Width="80" Height="80" CornerRadius="40" Margin="0 50" Background="white">
+                                <Label FontSize="30" Foreground="black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">MD</Label>
+                        </Border>
+                        <Button Classes="tab" Margin="0 20 0 10" Padding="10" Content="New" PointerEnter="LabelMouseEntered" PointerLeave="LabelMouseLeave"></Button>
+                        <Button Classes="tab" Margin="0 10" Padding="10"  Content="Delete" PointerEnter="LabelMouseEntered" PointerLeave="LabelMouseLeave"></Button>
+                        <Button Classes="tab" Margin="0 10" Padding="10"  Content="Pull" PointerEnter="LabelMouseEntered" PointerLeave="LabelMouseLeave"></Button>
+                        <Button Classes="tab" Margin="0 10" Padding="10"  Content="Push" PointerEnter="LabelMouseEntered" PointerLeave="LabelMouseLeave"></Button>
+                        <Button Classes="tab" Margin="0 10" Padding="10"  Content="Options" PointerEnter="LabelMouseEntered" PointerLeave="LabelMouseLeave"></Button>
+                        <Button Classes="tab" Margin="0 10" Padding="10"  Content="Quit" PointerEnter="LabelMouseEntered" PointerLeave="LabelMouseLeave" Click="ExitButtonClicked"></Button>
+                         
+                        <Menu Background="#303030" Foreground="white" VerticalAlignment="Stretch">
+                                <MenuItem Header="_File" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                        <MenuItem Header="_Open..." Click="OpenMenuClicked"/>
+                                        <Separator/>
+                                        <MenuItem Header="_Exit"/>
+                                </MenuItem>
+                                <MenuItem Header="_Edit" VerticalAlignment="Center">
+                                        <MenuItem Header="Copy"/>
+                                        <MenuItem Header="Paste"/>
+                                </MenuItem>
+                        </Menu>
+                        
+                </StackPanel>
+                
+                                <Grid Grid.Column="1" Background="#303030">
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="1" />
+                                <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                </Grid>
+                -->
+
+        </Grid>
+</Window>

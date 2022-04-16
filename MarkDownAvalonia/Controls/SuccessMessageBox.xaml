@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="420" d:DesignHeight="360"
+        x:Class="MarkDownAvalonia.Controls.SuccessMessageBox"
+        Title="Message" Background="#312f2f" SystemDecorations="BorderOnly" WindowStartupLocation="CenterOwner">
+        <Window.Styles>
+                <Style Selector="Button.confirm /template/ ContentPresenter">
+                        <Setter Property="CornerRadius" Value="10"></Setter>
+                </Style>
+                
+                <Style Selector="Button.confirm">
+                        <Setter Property="FontWeight" Value="UltraBold" />
+                        <Setter Property="Foreground" Value="#1FDC97" />
+                        <Setter Property="Width" Value="100" />
+                        <Setter Property="Height" Value="30" />
+                        <Setter Property="Background" Value="white"/>
+                        <Setter Property="BorderThickness" Value="0" />
+                </Style>
+        </Window.Styles>
+        <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                        <Border Width="80" Height="80" Padding="10" Background="white" CornerRadius="40">
+                                <PathIcon FontWeight="UltraBold" Foreground="#1FDC97" Data="M63.222927 512c0 0 231.767598 189.584869 254.790964 350.823134 0 0 303.906591-497.491565 641.581264-542.003338 0 0-102.837156-74.943876-69.070098-193.395662 0 0-187.255825 18.684548-540.279067 566.637388L184.79375 413.212066 63.222927 512z" HorizontalAlignment="Center"></PathIcon>
+                        </Border>
+                </Grid>
+                <Label Grid.Row="3" HorizontalAlignment="Center" FontSize="15" Name="message" Foreground="white" Content="这是通知的内容" />
+                <Grid Grid.Row="5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 10 5">
+                                <Button Classes="confirm" Content="OK" Click="CloseWindow" />
+                        </StackPanel>
+                </Grid>
+        </Grid>
+</Window>

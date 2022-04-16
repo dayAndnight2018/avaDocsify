@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Update="**\*.xaml.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+        </Compile>
+        <AvaloniaResource Include="**\*.xaml">
+            <SubType>Designer</SubType>
+        </AvaloniaResource>
+        <Compile Update="Controls\EditorWindow.xaml.cs">
+          <DependentUpon>EditorWindow.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Controls\SuccessMessageBox.xaml.cs">
+          <DependentUpon>SuccessMessageBox.xaml</DependentUpon>
+        </Compile>
+        <Compile Update="Controls\WarningMessageBox.xaml.cs">
+          <DependentUpon>WarningMessageBox.xaml</DependentUpon>
+        </Compile>
+        <Content Include="Assets\favicon.ico">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="theme.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <AvaloniaResource Remove="Styles\**" />
+        <Compile Remove="Styles\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="0.10.0" />
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="0.10.0" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0" />
+        <PackageReference Include="Citrus.Avalonia" Version="1.3.0-preview" />
+        <PackageReference Include="Markdown.Avalonia" Version="0.10.10" />
+        <PackageReference Include="Material.Avalonia" Version="1.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="img.png" />
+      <None Remove="Styles\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <AvaloniaResource Include="Assets\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="config.json" />
+      <Content Include="config.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="favicon.ico" />
+    </ItemGroup>
+    <ItemGroup>
+      <UpToDateCheckInput Remove="themes\MyCustomerDefault.xaml" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="main.md" />
+      <EmbeddedResource Include="main.md">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="template.html" />
+      <EmbeddedResource Include="template.html">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Remove="Styles\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <AvaloniaXaml Remove="Styles\**" />
+    </ItemGroup>
+</Project>

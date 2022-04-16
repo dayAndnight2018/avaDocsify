@@ -1,0 +1,47 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="420" d:DesignHeight="360"
+        x:Class="MarkDownAvalonia.Controls.WarningMessageBox"
+        Title="Message" Background="#312f2f" SystemDecorations="BorderOnly" WindowStartupLocation="CenterOwner">
+        <Window.Styles>
+                <!-- 警告提示 -->
+                <Style Selector="Button.warningConfirm /template/ ContentPresenter">
+                        <Setter Property="CornerRadius" Value="10" />
+                </Style>
+    
+                <Style Selector="Button.warningConfirm">
+                        <Setter Property="FontWeight" Value="UltraBold" />
+                        <Setter Property="Foreground" Value="#FF9800" />
+                        <Setter Property="Width" Value="100" />
+                        <Setter Property="Height" Value="30" />
+                        <Setter Property="Background" Value="white" />
+                        <Setter Property="Margin" Value="10 0 10 0" />
+                        <Setter Property="BorderThickness" Value="0" />
+                </Style>
+        </Window.Styles>
+        <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                        <Border Width="80" Height="80" Padding="10" Background="white" CornerRadius="40">
+                                <PathIcon FontWeight="UltraBold" Foreground="#FF9800" Data="M468.114286 621.714286c7.314286 21.942857 21.942857 36.571429 43.885714 36.571428s36.571429-14.628571 43.885714-36.571428L585.142857 219.428571c0-43.885714-36.571429-73.142857-73.142857-73.142857-43.885714 0-73.142857 36.571429-73.142857 80.457143l29.257143 394.971429zM512 731.428571c-43.885714 0-73.142857 29.257143-73.142857 73.142858s29.257143 73.142857 73.142857 73.142857 73.142857-29.257143 73.142857-73.142857-29.257143-73.142857-73.142857-73.142858z" HorizontalAlignment="Center"></PathIcon>
+                        </Border>
+                </Grid>
+                <Label Grid.Row="3" HorizontalAlignment="Center" FontSize="15" Name="message" Foreground="white" Content="这是警告的内容" />
+                <Grid Grid.Row="5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 10 5">
+                                <Button  Classes="warningConfirm"  Content="Cancel" Click="CloseWindow" />
+                                <Button  Classes="warningConfirm"  Content="OK" Click="Confirm" />
+                        </StackPanel>
+                </Grid>
+        </Grid>
+</Window>

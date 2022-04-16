@@ -1,0 +1,44 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="420" d:DesignHeight="360"
+        x:Class="MarkDownAvalonia.Controls.ErrorMessageBox"
+        Title="Message" Background="#312f2f" SystemDecorations="BorderOnly" WindowStartupLocation="CenterOwner">
+        <Window.Styles>
+                <Style Selector="Button.confirm /template/ ContentPresenter">
+                        <Setter Property="CornerRadius" Value="10"></Setter>
+                </Style>
+                
+                <Style Selector="Button.confirm">
+                        <Setter Property="FontWeight" Value="UltraBold" />
+                        <Setter Property="Foreground" Value="#C0015A" />
+                        <Setter Property="Width" Value="100" />
+                        <Setter Property="Height" Value="30" />
+                        <Setter Property="Background" Value="white"/>
+                        <Setter Property="BorderThickness" Value="0" />
+                </Style>
+        </Window.Styles>
+        <Grid>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                        <Border Width="80" Height="80" Padding="10" Background="white" CornerRadius="40">
+                                <PathIcon FontWeight="UltraBold" Foreground="#C0015A" Data="M265.28 310.72a32 32 0 0 1 45.44-45.44l448 448a32 32 0 0 1-45.44 45.44z M713.28 265.28a32 32 0 0 1 45.44 45.44l-448 448a32 32 0 0 1-45.44-45.44z" HorizontalAlignment="Center"></PathIcon>
+                        </Border>
+                </Grid>
+                <Label Grid.Row="3" HorizontalAlignment="Center" FontSize="15" Name="message" Content="这是错误的内容" />
+                <Grid Grid.Row="5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 10 5">
+                                <Button Classes="confirm" Content="OK" Click="CloseWindow" />
+                        </StackPanel>
+                </Grid>
+        </Grid>
+</Window>
