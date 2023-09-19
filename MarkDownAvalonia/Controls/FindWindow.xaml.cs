@@ -1,12 +1,14 @@
 using System;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 
 namespace MarkDownAvalonia.Controls
 {
-    public class FindWindow : Window
+    public partial class FindWindow : Window
     {
         private readonly TextBox input;
         private readonly TextBox replace;
@@ -85,12 +87,13 @@ namespace MarkDownAvalonia.Controls
             }
 
             int currentMatchIndex = -1;
-            if ((currentMatchIndex = text.IndexOf(searchText, lastIndex + 1)) != -1)
+            if ((currentMatchIndex = text.IndexOf(searchText, lastIndex + 1, StringComparison.Ordinal)) != -1)
             {
                 mainWindowTextBox.SelectionBrush = new SolidColorBrush(Colors.DodgerBlue);
                 mainWindowTextBox.SelectionForegroundBrush = new SolidColorBrush(Colors.White);
                 mainWindowTextBox.SelectionStart = currentMatchIndex;
                 mainWindowTextBox.SelectionEnd = currentMatchIndex + searchText.Length;
+                mainWindowTextBox.CaretIndex = currentMatchIndex;
                 // update new matched
                 matchOrder++;
                 lastIndex = currentMatchIndex;
@@ -129,6 +132,7 @@ namespace MarkDownAvalonia.Controls
                 mainWindowTextBox.SelectionForegroundBrush = new SolidColorBrush(Colors.White);
                 mainWindowTextBox.SelectionStart = currentMatchIndex;
                 mainWindowTextBox.SelectionEnd = currentMatchIndex + searchText.Length;
+                mainWindowTextBox.CaretIndex = currentMatchIndex;
                 // update new matched
                 matchOrder++;
                 lastIndex = currentMatchIndex;
@@ -170,6 +174,11 @@ namespace MarkDownAvalonia.Controls
                 return;
 
             mainWindowTextBox.Text = mainWindowTextBox.Text.Replace(searchText, replace.Text);
+        }
+        
+        private void WindowBorder_OnPointerPressed(object? sender, PointerPressedEventArgs e)
+        {
+            this.BeginMoveDrag(e);
         }
     }
 }

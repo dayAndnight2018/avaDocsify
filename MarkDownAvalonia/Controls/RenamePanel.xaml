@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="120"
+        x:Class="MarkDownAvalonia.Controls.RenamePanel"
+        Background="#312F2F" BorderBrush="#473A3B" Foreground="silver" SystemDecorations="BorderOnly" WindowStartupLocation="CenterScreen">
+    <Window.Styles>
+        <Style Selector="Button.tab">
+            <Setter Property="Background" Value="{Binding Path=ButtonBackground}" />
+            <Setter Property="Foreground" Value="{Binding Path=ButtonForeground}" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+        
+        <Style Selector="Button:pointerover.tab /template/ ContentPresenter">
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Background" Value="{Binding Path=ActiveColor}" />
+        </Style>
+        
+        <Style Selector="ScrollBar">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{Binding Path=BodyBackground}" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style Selector="Button.tab:pointerover">
+            <Setter Property="Background" Value="{Binding Path=ActiveColor}" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+    </Window.Styles>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.ColumnSpan="3" FontSize="14" FontWeight="Bold" Padding="10" VerticalAlignment="Center" TextAlignment="Left" Text="Rename File"></TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Name="tbx" FontSize="10" Margin="5" Foreground="black" VerticalAlignment="Center" FontFamily="苹方,苹方-简,Microsoft YaHei,Simsun,宋体-简"></TextBox>
+        <Button Grid.Row="2" Grid.Column="1" Classes="tab" x:Name="confirmBtn" >Ok</Button>
+        <Button Grid.Row="2" Grid.Column="2" Classes="tab" x:Name="cancelBtn" Click="Cancel_OnClick">Cancel</Button>
+    </Grid>
+</Window>

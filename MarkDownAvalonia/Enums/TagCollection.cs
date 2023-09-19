@@ -35,5 +35,24 @@ namespace MarkDownAvalonia.Enums
         /// </summary>
         public static Tag H6 = new Tag("###### ", null);
         
+        /// <summary>
+        /// bold
+        /// </summary>
+        public static Tag BOLD = new Tag("**", "**");
+        
+        /// <summary>
+        /// bold
+        /// </summary>
+        public static Tag QUOTE = new Tag("`", "`");
+        
+        /// <summary>
+        /// pre
+        /// </summary>
+        public static Tag PRE = new Tag("> ", "");
+        
+        /// <summary>
+        /// list
+        /// </summary>
+        public static Tag LIST = new Tag("* ", "");
     }
 }

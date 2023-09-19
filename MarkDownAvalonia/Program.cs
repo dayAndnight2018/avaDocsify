@@ -1,8 +1,5 @@
-﻿using System;
-using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
-using Microsoft.AspNetCore.Hosting;
+﻿using Avalonia;
+using Avalonia.Media;
 
 namespace MarkDownAvalonia
 {
@@ -19,8 +16,19 @@ namespace MarkDownAvalonia
 
         // Avalonia configuration, don't remove; also used by visual designer.
         public static AppBuilder BuildAvaloniaApp()
-            => AppBuilder.Configure<App>()
+            => AppBuilder.Configure<EntryApp>()
                 .UsePlatformDetect()
-                .LogToDebug();
+                .With(new FontManagerOptions
+                {
+                    FontFallbacks = new[]
+                    {
+                        new FontFallback
+                        {
+                            FontFamily = new FontFamily("Apple Color Emoji"),
+                            UnicodeRange = UnicodeRange.Parse("U+23??, U+26??, U+2700-27BF, U+2B??, U+1F1E6-1F1FF, U+1F300-1F5FF, U+1F600-1F64F, U+1F680-1F6FF, U+1F9??")
+                        }
+                    }
+                })
+                .LogToTrace();
     }
 }

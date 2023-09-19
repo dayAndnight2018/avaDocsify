@@ -1,0 +1,51 @@
+﻿<Properties StartupConfiguration="{BF2A789F-640F-4303-A4B3-701046145246}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.MarkDownAvalonia PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="MarkDownAvalonia/Controls/PostItemControl.xaml">
+    <Files>
+      <File FileName="MarkDownAvalonia/theme.json" />
+      <File FileName="MarkDownAvalonia/Data/GitUtils.cs" />
+      <File FileName="MarkDownAvalonia/Data/MessageBox.cs" />
+      <File FileName="MarkDownAvalonia/Data/FileHandler.cs" />
+      <File FileName="MarkDownAvalonia/Data/Configuration.cs" />
+      <File FileName="MarkDownAvalonia/Data/ConfigManager.cs" />
+      <File FileName="MarkDownAvalonia/MainWindow.xaml.cs" />
+      <File FileName="MarkDownAvalonia/MainWindow.xaml" />
+      <File FileName="MarkDownAvalonia/Constants/StringConstant.cs" />
+      <File FileName="MarkDownAvalonia/Controls/PostItemControl.xaml.cs" />
+      <File FileName="MarkDownAvalonia/Controls/PostItemFilterControl.xaml" />
+      <File FileName="MarkDownAvalonia/Controls/PostItemFilterControl.xaml.cs" />
+      <File FileName="MarkDownAvalonia/Controls/EditorWindow.xaml" />
+      <File FileName="MarkDownAvalonia/Controls/ErrorMessageBox.xaml" />
+      <File FileName="MarkDownAvalonia/Data/ViewModels/DataContextUtils.cs" />
+      <File FileName="MarkDownAvalonia/Data/ViewModels/MainWindowDataContextViewModel.cs" Line="67" Column="1" />
+      <File FileName="MarkDownAvalonia/Controls/PostItemControl.xaml" Line="7" Column="176" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MarkDownAvalonia" expanded="True">
+            <Node name="MarkDownAvalonia" expanded="True">
+              <Node name="Constants" expanded="True" />
+              <Node name="Controls" expanded="True">
+                <Node name="PostItemControl.xaml" selected="True" />
+              </Node>
+              <Node name="Data" expanded="True">
+                <Node name="ViewModels" expanded="True" />
+              </Node>
+              <Node name="Enums" expanded="True" />
+              <Node name="Extends" expanded="True" />
+              <Node name="ReactiveModels" expanded="True" />
+              <Node name="template" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -1,0 +1,89 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="420" d:DesignHeight="360"
+        x:Class="MarkDownAvalonia.Controls.PushWindow" Background="white" WindowStartupLocation="CenterOwner" SystemDecorations="None"
+        BorderThickness="7" CanResize="False">
+
+<Window.Styles>
+        <Style Selector="Button.tab">
+            <Setter Property="Background" Value="#303030" />
+            <Setter Property="Foreground" Value="white" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="10 0 10 0" />
+        </Style>
+
+        <Style Selector="Button.tab /template/ ContentPresenter">
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+        <Style Selector="Button.tab:pointerover">
+            <Setter Property="Background" Value="#C75049" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+    </Window.Styles>
+
+    <Border CornerRadius="5" BorderThickness="0 0 3 3" Name="windowBorder"
+            PointerPressed="WindowBorder_OnPointerPressed">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#303030">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <Border HorizontalAlignment="Center" BorderThickness="1" BorderBrush="white" Width="30" Height="30"
+                            CornerRadius="15" Margin="10 5" Background="white">
+                        <PathIcon Margin="5"
+                                  Data="M670.4 329.344L512 487.744 353.6 329.344a31.936 31.936 0 0 0-25.344-9.216l-2.56 0.384a32 32 0 0 0-37.76 31.488l0.064 320a32 32 0 0 0 64 0l-0.064-253.76 137.408 137.408a32 32 0 0 0 40.832 3.712l4.48-3.712L672 418.24V672a32 32 0 1 0 64 0v-320A32 32 0 0 0 704 320l-5.76 0.512-2.496-0.384a31.936 31.936 0 0 0-25.344 9.216z" />
+                    </Border>
+                    <Label Name="title" VerticalAlignment="Center" Foreground="white" FontSize="16">Commit And Push</Label>
+                </StackPanel>
+                <Button Grid.Column="2" Width="30" Height="30" Foreground="white" Background="#C75049"
+                        BorderThickness="0"
+                        Margin="10 0" Click="CloseWindow">
+                    <PathIcon Foreground="white"
+                              Data="M1023.997 114.97 911.408 2.388 516.149 397.629 118.5 0 5.91 112.585l397.649 397.629L7.107 906.648l112.587 112.59 396.454-396.439 395.259 395.249 112.59-112.59L628.738 510.214 1023.997 114.97z" />
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="3*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="4" TextWrapping="NoWrap" Name="inputBox"
+                         FontFamily="Microsoft YaHei,Simsun,苹方,苹方-简,宋体-简"
+                         ScrollViewer.VerticalScrollBarVisibility="Hidden" />
+
+                <Button Grid.Column="4" Grid.Row="5" Classes="tab" Content="Commit" Click="Commit" />
+
+            </Grid>
+        </Grid>
+    </Border>
+
+</Window>

@@ -11,14 +11,16 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Markdown.Avalonia;
+using MarkDownAvalonia.Constants;
 using MarkDownAvalonia.Controls;
+using MarkDownAvalonia.Controls.Command;
 using MarkDownAvalonia.Data;
 using MarkDownAvalonia.Enums;
 using MarkDownAvalonia.Extends;
 
 namespace MarkDownAvalonia
 {
-    public class MainWindow : Window
+    partial class MainWindow : Window
     {
         // input text box
         private readonly TextBox inputTbx;
@@ -29,20 +31,24 @@ namespace MarkDownAvalonia
         // container for posts
         private readonly StackPanel articleListPanel;
 
+        private readonly PostItemFilterControl filterTbx;
+
+        // 主grid
         private readonly Grid mainGrid;
 
         // previewer
         private readonly MarkdownScrollViewer markdownPreview;
 
         // selected item
-        private PostItemControl selectedItem = null;
+        private volatile PostItemControl selectedItem = null;
 
         private readonly Label infoBar = null;
+
+        private readonly Border mainBroder = null;
 
         // cache posts for search
         private readonly List<PostItemControl> cacheControls = new List<PostItemControl>();
 
-        private const string TimePattern = "yyyy/MM/dd HH:mm:ss";
         private const string Suffix = ".md";
 
         private bool hidden = false;
@@ -64,15 +70,21 @@ namespace MarkDownAvalonia
 
         public MainWindow()
         {
-            InitializeComponent();
             DataContext = DataContextUtils.MainWindowDataContext;
+            InitializeComponent();
             // load controls
             this.inputTbx = this.FindControl<TextBox>("inputTextBox");
             this.searchBox = this.FindControl<TextBox>("searchBox");
             this.articleListPanel = this.FindControl<StackPanel>("postItemsPanel");
+            this.filterTbx = this.FindControl<PostItemFilterControl>("filterTbx");
             this.markdownPreview = this.FindControl<MarkdownScrollViewer>("markdownPreview");
             this.mainGrid = this.FindControl<Grid>("mainGrid");
             this.infoBar = this.FindControl<Label>("infoBar");
+            this.mainBroder = this.FindControl<Border>("mainBorder");
+
+            AutoSaveHolder.init(this.infoBar, this.inputTbx);
+            registerFilterBoxEvent();
+            // this.mainBroder.CornerRadius = CornerRadius.Parse("5,5,5,5");
             // load config
             // todo: check config is null or not
             // this.markdownPreview.AssetPathRoot = CommonData.config.PostDirectory;
@@ -84,7 +96,7 @@ namespace MarkDownAvalonia
         private void LoadPosts()
         {
             // make sure directory exists
-            GitUtils.MakeDirectory(CommonData.config.PostDirectory);
+            GitUtils.ensureDirectoryExists(CommonData.config.PostDirectory);
             // clear selected
             if (selectedItem != null)
             {
@@ -97,28 +109,20 @@ namespace MarkDownAvalonia
 
             // get markdown files
             var files = Directory.GetFiles(CommonData.config.PostDirectory)
+                .OrderBy(ele => Path.GetFileName(ele))
                 .Where(f => f.EndsWith(Suffix));
 
             // deal with each post
             foreach (var file in files)
             {
-                var current = new PostItemControl(file, this.inputTbx);
-                current.Register((sender, e) =>
-                {
-                    foreach (var control in cacheControls)
-                    {
-                        control.Background = itemPanelBackground;
-                        control.Foreground = itemPanelForeground;
-                        control.RemoveHandlers();
-                    }
-
-                    // current 
-                    current.Background = itemPanelFocusBackground;
-                    current.Foreground = itemPanelFocusForeground;
-                    selectedItem = current;
-                    current.ConfigTimer();
-                });
+                var current = new PostItemControl(file, this.inputTbx, this, cacheControls);
+                selectedItem = current;
                 articleListPanel.Children.Add(current);
+            }
+
+            if (articleListPanel.Children.Count() > 0)
+            {
+                filterTbx.IsVisible = true;
             }
 
             // bake in cache
@@ -132,21 +136,53 @@ namespace MarkDownAvalonia
         private void InitializeComponent()
         {
             AvaloniaXamlLoader.Load(this);
+            this.SystemDecorations = SystemDecorations.BorderOnly;
         }
 
         public async void OpenSln(object sender, RoutedEventArgs e)
         {
             var path = await new OpenFolderDialog().ShowAsync(this);
             if (string.IsNullOrWhiteSpace(path) || !Directory.Exists(path))
+            {
                 return;
+            }
 
-            // load sln file
-            var config = ConfigManager.loadSln(path);
-            CommonData.config = config;
-            markdownPreview.AssetPathRoot = CommonData.config.PostDirectory;
+            string[] files = Directory.GetFiles(path);
+            if (files.Length == 0 || ConfigManager.SlnExists(path))
+            {
+                // load sln file
+                CommonData.config = ConfigManager.loadSln(path);
+                markdownPreview.AssetPathRoot = CommonData.config.PostDirectory;
+                
+                // load posts
+                LoadPosts();
+            }
+        }
 
-            // load posts
-            LoadPosts();
+        private void registerFilterBoxEvent()
+        {
+            this.filterTbx.Register((sender, e) =>
+            {
+                if (e.Key == Key.Return)
+                {
+                    string input = filterTbx.GetSearchText();
+                    var filtered = new List<PostItemControl>();
+                    if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        filtered = cacheControls.Where(
+                            c => c.GetName().Contains(input, StringComparison.OrdinalIgnoreCase)).ToList();
+                    }
+                    else
+                    {
+                        filtered = cacheControls.Where(c => c != null).ToList();
+                    }
+
+                    articleListPanel.Children.Clear();
+                    articleListPanel.Children.AddRange(filtered);
+                    filterTbx.IsVisible = true;
+                    e.Handled = true;
+                }
+            });
         }
 
         /// <summary>
@@ -156,35 +192,29 @@ namespace MarkDownAvalonia
         /// <param name="e"></param>
         public void NewPost(object sender, RoutedEventArgs e)
         {
-            // todo : check config
-            // there already a temp post
-            if (FindTempFile())
-                return;
-
-            var current = new PostItemControl(this.inputTbx);
-            current.Register((sender, e) =>
+            // 是否已经存在草稿
+            if (tempFileExists())
             {
-                foreach (var control in cacheControls)
-                {
-                    control.Background = itemPanelBackground;
-                    control.Foreground = itemPanelForeground;
-                    control.RemoveHandlers();
-                }
+                return;
+            }
 
-                current.Background = itemPanelFocusBackground;
-                current.Foreground = itemPanelFocusForeground;
-                selectedItem = current;
-                current.ConfigTimer();
-            });
-                
-            inputTbx.Text =
-                $"# New Post{Environment.NewLine}`{DateTime.Now.ToString(TimePattern)}  by: 程序员·小李`{Environment.NewLine}{Environment.NewLine}";
-            markdownPreview.Markdown =
-                $"# New Post{Environment.NewLine}`{DateTime.Now.ToString(TimePattern)}  by: 程序员·小李`{Environment.NewLine}{Environment.NewLine}";
-            current.UpdateCache();
-            articleListPanel.Children.Insert(0, current);
-            cacheControls.Add(current);
-            SelectControl(current);
+            var dateStr = DateTime.Now.ToString(StringConstant.DATE_PATTERN);
+            var newPostText = String.Format(StringConstant.NEW_POST_PATTERN, Environment.NewLine, dateStr,
+                "程序员·小李");
+            inputTbx.Text = newPostText;
+            markdownPreview.Markdown = newPostText;
+
+            var newPost = new PostItemControl(this.inputTbx, this, infoBar, cacheControls);
+            articleListPanel.Children.Insert(0, newPost);
+            cacheControls.Add(newPost);
+            
+            newPost.selectedSelf();
+            selectedItem = newPost;
+
+            if (articleListPanel.Children.Where(ele => ((PostItemControl) ele).isExists).Count() > 0)
+            {
+                filterTbx.IsVisible = true;
+            }
         }
 
         /// <summary>
@@ -203,7 +233,7 @@ namespace MarkDownAvalonia
                 // exists
                 using (var sw = new FileStream(selectedItem.fileInfo.FullName, FileMode.Create))
                 {
-                    sw.Write(Encoding.UTF8.GetBytes(inputTbx.Text));
+                    sw.Write(Encoding.Unicode.GetBytes(inputTbx.Text));
                     sw.Flush();
                 }
 
@@ -246,6 +276,8 @@ namespace MarkDownAvalonia
                     selectedItem.isExists = true;
                     selectedItem.fileInfo = new FileInfo(result);
                     await MessageBox.ShowSuccess(this, "Saved success!");
+
+                    filterTbx.IsVisible = true;
                 }
             }
             else
@@ -269,36 +301,52 @@ namespace MarkDownAvalonia
         /// <param name="e"></param>
         public void PullFiles(object sender, RoutedEventArgs e)
         {
-            GitUtils.GitPull();
+            var pullResult = GitUtils.GitPull();
             Console.WriteLine("pull over");
+            if (pullResult)
+            {
+                this.infoBar.Content = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}: 拉取成功！";
+            }
         }
 
         /// <summary>
         /// push source
         /// </summary>
-        public void PushFiles(object sender, RoutedEventArgs e)
+        public async void PushFiles(object sender, RoutedEventArgs e)
         {
+            var mb = new PushWindow() {Width = 500, Height = 320};
+            var res = await mb.ShowDialog<string>(this);
+            if (res == null)
+            {
+                this.infoBar.Content = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}: 取消发布！";
+                return;
+            }
+            
             // 更新目录
             List<string> files = Directory.GetFiles(CommonData.config.PostDirectory)
-                .OrderBy(ele=>Directory.GetCreationTime(ele))
+                .OrderBy(ele => Path.GetFileName(ele))
                 .Where(ele => Path.GetExtension(ele).EndsWith("md") && !Path.GetFileName(ele).StartsWith("_"))
                 .Where(ele => !Path.GetFileNameWithoutExtension(ele).Equals("README"))
                 .ToList();
+            
             if (files.Count > 0)
             {
-                using (var sw = new StreamWriter(Path.Combine(CommonData.config.PostDirectory, "_sidebar.md"),false))
+                using (var sw = new StreamWriter(Path.Combine(CommonData.config.PostDirectory, "_sidebar.md"), false))
                 {
                     sw.WriteLine("<!-- docs/_sidebar.md -->");
                     sw.WriteLine(Environment.NewLine);
                     sw.WriteLine("* [首页](/)");
                     foreach (var ele in files)
                     {
-                        sw.WriteLine($"* [{Path.GetFileNameWithoutExtension(ele)}]({Path.GetFileNameWithoutExtension(ele)})");
+                        sw.WriteLine(
+                            $"* [{Path.GetFileNameWithoutExtension(ele)}]({Path.GetFileNameWithoutExtension(ele)})");
                     }
+
                     sw.Flush();
                 }
             }
-            bool pushResult = GitUtils.GitPush();
+
+            bool pushResult = GitUtils.GitPush(res);
             Console.WriteLine("push over");
             if (pushResult)
             {
@@ -306,7 +354,7 @@ namespace MarkDownAvalonia
             }
         }
 
-        public void PreviewPost(object sender, RoutedEventArgs e)
+        public void FindAndReplace(object sender, RoutedEventArgs e)
         {
             var mb = new FindWindow(inputTbx) {Width = 500, Height = 320};
             mb.Show(this);
@@ -387,6 +435,16 @@ namespace MarkDownAvalonia
             new OpenFolderDialog().ShowAsync(this);
         }
 
+        public void showFilter(object sender, RoutedEventArgs e)
+        {
+            if (hidden)
+            {
+                ToggleListPanel(null, null);
+            }
+            this.filterTbx.IsVisible = true;
+        }
+
+
         /// <summary>
         /// exit button
         /// </summary>
@@ -395,6 +453,18 @@ namespace MarkDownAvalonia
         public void ExitButtonClicked(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        public void maxmiumButtonClicked(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Maximized;
+            // this.mainBroder.CornerRadius = CornerRadius.Parse("0,0,0,0");
+        }
+
+        public void minimiumButtonClicked(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+            // this.mainBroder.CornerRadius = CornerRadius.Parse("5,5,5,5");
         }
 
         /// <summary>
@@ -408,7 +478,6 @@ namespace MarkDownAvalonia
             {
                 Width = 500,
                 Height = 320
-                
             }.Show(this);
         }
 
@@ -427,45 +496,20 @@ namespace MarkDownAvalonia
         {
             if (e.Property.Name.Equals("Text"))
             {
-                var old = markdownPreview.ScrollValue;
+                //var old = markdownPreview.ScrollValue;
                 markdownPreview.Markdown = inputTbx.Text;
-                markdownPreview.ScrollValue = new Vector(old.X, old.Y);
+                // markdownPreview.ScrollValue = new Vector(old.X, old.Y);
             }
         }
 
         /// <summary>
-        /// check if exist temp markdown file
+        /// 检查是否已经存在草稿
         /// </summary>
         /// <returns></returns>
-        private bool FindTempFile()
+        private bool tempFileExists()
         {
             return cacheControls.Exists(ele => !ele.isExists);
         }
-
-        /// <summary>
-        /// enable some item selected
-        /// </summary>
-        /// <param name="target"></param>
-        private void SelectControl(PostItemControl target)
-        {
-            foreach (var control in cacheControls)
-            {
-                control.RemoveHandlers();
-                if (control == target)
-                {
-                    control.Background = itemPanelFocusBackground;
-                    control.Foreground = itemPanelFocusForeground;
-                    selectedItem = control;
-                    control.ConfigTimer();
-                }
-                else
-                {
-                    control.Background = itemPanelBackground;
-                    control.Foreground = itemPanelForeground;
-                }
-            }
-        }
-
 
         public async void InputShortcutKeys(object sender, KeyEventArgs e)
         {
@@ -475,17 +519,17 @@ namespace MarkDownAvalonia
             // control + v
             if (modifiers == KeyModifiers.Control && key == Key.V)
             {
-                var format = await Application.Current.Clipboard.GetFormatsAsync();
+                var format = await this.Clipboard.GetFormatsAsync();
                 if (format.Length > 0)
                 {
                     if (format[0].Equals("public.png") && selectedItem != null && selectedItem.isExists)
                     {
-                        var data = await Application.Current.Clipboard.GetDataAsync(format[1]) as byte[];
+                        var data = await this.Clipboard.GetDataAsync(format[1]) as byte[];
                         var stream = new MemoryStream(data);
                         var image = new Bitmap(stream);
                         var path = Path.Combine(CommonData.config.PostDirectory,
                             Path.GetFileNameWithoutExtension(selectedItem.fileInfo.FullName));
-                        GitUtils.MakeDirectory(path);
+                        GitUtils.ensureDirectoryExists(path);
                         var fileName = Guid.NewGuid().ToString() + ".png";
                         var filePath = Path.Combine(Path.GetFileNameWithoutExtension(selectedItem.fileInfo.FullName),
                             fileName);
@@ -522,10 +566,31 @@ namespace MarkDownAvalonia
                 HandleHeaderShortCutKeys(dic[key]);
             }
 
+            if (modifiers == KeyModifiers.Control && key == Key.P)
+            {
+                blockQuote(TagCollection.PRE);
+            }
+            
+            if (modifiers == KeyModifiers.Control && key == Key.L)
+            {
+                blockQuote(TagCollection.LIST);
+            }
+
             // command + s
             if (modifiers == KeyModifiers.Control && key == Key.S)
             {
                 SavePost(null, null);
+            }
+            
+            var bidiDic = new Dictionary<Key, Tag>
+            {
+                {Key.B, TagCollection.BOLD},
+                {Key.G, TagCollection.QUOTE}
+            };
+            // command + b
+            if (modifiers == KeyModifiers.Control && bidiDic.ContainsKey(key))
+            {
+                HandleBIDIShortCutKeys(bidiDic[key]);
             }
         }
 
@@ -549,6 +614,35 @@ namespace MarkDownAvalonia
                 inputTbx.SelectedText = selectedText.StartsWith(tag.Prefix)
                     ? selectedText.Substring(tag.Prefix.Length)
                     : string.Concat(tag.Prefix, selectedText);
+            }
+        }
+        
+        private void blockQuote(Tag tag)
+        {
+            var selectedText = inputTbx.SelectedText;
+            if (!string.IsNullOrWhiteSpace(selectedText))
+            {
+                inputTbx.SelectedText = selectedText.StartsWith(tag.Prefix)
+                    ? selectedText.Replace(tag.Prefix, string.Empty)
+                    : string.Concat(tag.Prefix, selectedText.Replace(Environment.NewLine, Environment.NewLine + tag.Prefix));
+            }
+        }
+        
+        private void HandleBIDIShortCutKeys(Tag tag)
+        {
+            var selectedText = inputTbx.SelectedText;
+            if (!string.IsNullOrWhiteSpace(selectedText))
+            {
+                bool hasTag = selectedText.StartsWith(tag.Prefix) && selectedText.EndsWith(tag.Suffix);
+                if (hasTag)
+                {
+                    inputTbx.SelectedText = selectedText.Replace(tag.Prefix, string.Empty)
+                        .Replace(tag.Suffix, string.Empty);
+                }
+                else
+                {
+                    inputTbx.SelectedText = string.Concat(tag.Prefix, selectedText, tag.Suffix);
+                }
             }
         }
 
@@ -578,14 +672,151 @@ namespace MarkDownAvalonia
         /// 处理窗体大小改变
         /// </summary>
         /// <param name="state"></param>
-        protected override void HandleWindowStateChanged(WindowState state)
+        // protected override void HandleWindowStateChanged(WindowState state)
+        // {
+        //     if (!hidden)
+        //     {
+        //         mainGrid.ColumnDefinitions[0].Width = new GridLength(this.Width / 5);
+        //     }
+        //     base.HandleWindowStateChanged(state);
+        // }
+
+        protected override void OnResized(WindowResizedEventArgs e)
         {
             if (!hidden)
             {
                 mainGrid.ColumnDefinitions[0].Width = new GridLength(this.Width / 5);
             }
+            base.OnResized(e);
+        }
 
-            base.HandleWindowStateChanged(state);
+        private void RemoveDuplicateImage(object? sender, RoutedEventArgs e)
+        {
+            // 更新目录
+            Dictionary<string, string> imageFiles = new Dictionary<string, string>();
+            var directories = Directory.GetDirectories(CommonData.config.PostDirectory);
+            foreach (var directory in directories)
+            {
+                var subFiles = Directory.GetFiles(directory);
+                foreach (var subFile in subFiles)
+                {
+                    var extension = Path.GetExtension(subFile);
+                    if (extension.EndsWith("jpg") || extension.EndsWith("bmp") || extension.EndsWith("png"))
+                    {
+                        imageFiles.Add(Path.GetFileNameWithoutExtension(subFile), subFile);
+                    }
+                }
+            }
+
+            // 更新目录
+            List<string> files = Directory.GetFiles(CommonData.config.PostDirectory)
+                .OrderBy(ele => Directory.GetCreationTime(ele))
+                .Where(ele => Path.GetExtension(ele).EndsWith("md") && !Path.GetFileName(ele).StartsWith("_"))
+                .Where(ele => !Path.GetFileNameWithoutExtension(ele).Equals("README"))
+                .ToList();
+
+            if (files.Count > 0)
+            {
+                if (imageFiles.Count > 0)
+                {
+                    foreach (var mdFile in files)
+                    {
+                        var content = File.ReadAllText(mdFile);
+                        foreach (var imageFile in imageFiles)
+                        {
+                            if (content.Contains(imageFile.Key))
+                            {
+                                imageFiles.Remove(imageFile.Key);
+                            }
+                        }
+                    }
+                }
+
+                if (imageFiles.Count > 0)
+                {
+                    foreach (var imageFile in imageFiles)
+                    {
+                        File.Delete(imageFile.Value);
+                    }
+                    this.infoBar.Content = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}: 成功清理{imageFiles.Count}个重复图片！";
+                }
+            }
+        }
+        
+        
+
+        private void H1_OnClick(object? sender, RoutedEventArgs e)
+        {
+            HandleHeaderShortCutKeys(TagCollection.H1);
+        }
+        
+        private void H2_OnClick(object? sender, RoutedEventArgs e)
+        {
+            HandleHeaderShortCutKeys(TagCollection.H2);
+        }
+        
+        private void H3_OnClick(object? sender, RoutedEventArgs e)
+        {
+            HandleHeaderShortCutKeys(TagCollection.H3);
+        }
+        
+        private void H4_OnClick(object? sender, RoutedEventArgs e)
+        {
+            HandleHeaderShortCutKeys(TagCollection.H4);
+        }
+        
+        private void H5_OnClick(object? sender, RoutedEventArgs e)
+        {
+            HandleHeaderShortCutKeys(TagCollection.H5);
+        }
+        
+        private void H6_OnClick(object? sender, RoutedEventArgs e)
+        {
+            HandleHeaderShortCutKeys(TagCollection.H6);
+        }
+
+        private void BOLD_OnClick(object? sender, RoutedEventArgs e)
+        {
+            HandleBIDIShortCutKeys(TagCollection.BOLD);
+        }
+
+        private void QUOTO_OnClick(object? sender, RoutedEventArgs e)
+        {
+            blockQuote(TagCollection.PRE);
+        }
+
+        private void KEY_OnClick(object? sender, RoutedEventArgs e)
+        {
+            HandleBIDIShortCutKeys(TagCollection.QUOTE);
+        }
+
+        private void LIST_OnClick(object? sender, RoutedEventArgs e)
+        {
+            blockQuote(TagCollection.LIST);
+        }
+
+        private void Delete_OnClick(object? sender, RoutedEventArgs e)
+        {
+            var selectedText = inputTbx.SelectedText;
+            if (!string.IsNullOrWhiteSpace(selectedText))
+            {
+                inputTbx.SelectedText = string.Empty;
+            }
+        }
+
+        private async void Copy_OnClick(object? sender, RoutedEventArgs e)
+        {
+            inputTbx.Copy();
+        }
+
+        private async void Cut_OnClick(object? sender, RoutedEventArgs e)
+        {
+            inputTbx.Cut();
+        }
+
+        private void Paste_OnClick(object? sender, RoutedEventArgs e)
+        {
+            inputTbx.Paste();
         }
     }
 }

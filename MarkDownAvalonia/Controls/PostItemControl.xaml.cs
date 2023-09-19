@@ -1,11 +1,17 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Timers;
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Avalonia.Threading;
+using Avalonia.VisualTree;
+using MarkDownAvalonia.Controls.Command;
 using MarkDownAvalonia.Data;
 
 namespace MarkDownAvalonia.Controls
@@ -13,100 +19,113 @@ namespace MarkDownAvalonia.Controls
     /// <summary>
     /// use self defined control
     /// </summary>
-    public class PostItemControl : UserControl
+    public partial class PostItemControl : UserControl
     {
-        /// <summary>
-        /// item control
-        /// </summary>
-        private TextBlock postItemTitleTextBlock, postItemTimeTextBlock;
-        
-        /// <summary>
-        /// file info for item
-        /// </summary>
-        public FileInfo fileInfo = null;
-        
-        /// <summary>
-        /// text box for input
-        /// </summary>
-        private readonly TextBox inputTbx;
-        
-        /// <summary>
-        /// auto save timer
-        /// </summary>
-        private Timer autoSaveTimer;
-        
-        /// <summary>
-        /// cache
-        /// </summary>
-        private string inputTextCache = string.Empty;
-        
-        /// <summary>
-        /// if exist
-        /// </summary>
-        public bool isExists = false;
+        // component's title and time
+        private TextBlock postTitle, postTime;
 
+        // file info
+        public volatile FileInfo fileInfo = null;
+        
+        // whether exists or not
+        public volatile bool isExists = false;
+
+        private List<PostItemControl> cacheControls = null;
+
+        public volatile bool seleted = false;
+        
+        // main window
+        private Window mainWindow;
+
+        // 缓存
+        private volatile string cache = null;
+        
         private const string DatePattern = "yyyy/MM/dd HH:mm:ss";
         private const string DefaultTitle = "md*";
-        
-        private static readonly Brush itemPanelForeground = new SolidColorBrush(Color.Parse(CommonData.theme.ItemPanelForeground));
-        private static readonly Brush itemPanelBackground = new SolidColorBrush(Color.Parse(CommonData.theme.ItemPanelBackground));
-        private static readonly Brush itemPanelFocusForeground = new SolidColorBrush(Color.Parse(CommonData.theme.ItemPanelFocusForeground));
-        private static readonly Brush itemPanelFocusBackground = new SolidColorBrush(Color.Parse(CommonData.theme.ItemPanelFocusBackground));
+
+        private static readonly Brush itemPanelForeground =
+            new SolidColorBrush(Color.Parse(CommonData.theme.ItemPanelForeground));
+
+        private static readonly Brush itemPanelBackground =
+            new SolidColorBrush(Color.Parse(CommonData.theme.ItemPanelBackground));
+
+        private static readonly Brush itemPanelFocusForeground =
+            new SolidColorBrush(Color.Parse(CommonData.theme.ItemPanelFocusForeground));
+
+        private static readonly Brush itemPanelFocusBackground =
+            new SolidColorBrush(Color.Parse(CommonData.theme.ItemPanelFocusBackground));
         
         public PostItemControl()
         {
             AvaloniaXamlLoader.Load(this);
         }
 
-        public PostItemControl(TextBox inputTbx)
+        /**
+         * 用于草稿
+         */
+        public PostItemControl(TextBox editor, Window mainWindow, Label infoBar, List<PostItemControl> cacheControls)
         {
             AvaloniaXamlLoader.Load(this);
             Init();
+
+            this.mainWindow = mainWindow;
             
-            this.inputTbx = inputTbx;
-            postItemTitleTextBlock.Text = DefaultTitle;
-            postItemTimeTextBlock.Text = DateTime.Now.ToString(DatePattern);
+            // 初始化草稿
+            postTitle.Text = DefaultTitle;
+            postTime.Text = DateTime.Now.ToString(DatePattern);
+            this.cacheControls = cacheControls;
+            this.cache = editor.Text;
         }
 
+        /**
+         * 草稿的名称，便于搜索
+         */
         public string GetName()
         {
-            return postItemTitleTextBlock.Text;
+            return postTitle.Text;
         }
 
-        public PostItemControl(string file, TextBox inputTbx)
+        /**
+         * 用于现有文章
+         */
+        public PostItemControl(string file, TextBox editor, Window mainWindow, List<PostItemControl> cacheControls)
         {
             AvaloniaXamlLoader.Load(this);
-            this.inputTbx = inputTbx;
-            fileInfo = new FileInfo(file);
+            this.mainWindow = mainWindow;
+            this.cacheControls = cacheControls;
 
             Init();
 
+            fileInfo = new FileInfo(file);
             if (fileInfo.Exists)
             {
-                var name = Path.GetFileNameWithoutExtension(fileInfo.FullName);
-                var date = fileInfo.LastWriteTime.ToString(DatePattern);
-                postItemTitleTextBlock.Text = name;
-                postItemTimeTextBlock.Text = date;
+                // 根据修改日期、名称显示
+                postTitle.Text = Path.GetFileNameWithoutExtension(fileInfo.FullName);
+                postTime.Text = fileInfo.LastWriteTime.ToString(DatePattern);
                 isExists = true;
             }
         }
 
-        /// <summary>
-        /// update to now
-        /// </summary>
-        /// <param name="name"></param>
+        /**
+         * 保存后，更新展示
+         */
         public void UpdateItemPresent(string name)
         {
-            postItemTitleTextBlock.Text = name;
-            postItemTimeTextBlock.Text = DateTime.Now.ToString(DatePattern);
+            postTitle.Text = name;
+            postTime.Text = DateTime.Now.ToString(DatePattern);
         }
 
-        /// <summary>
-        /// cache text
-        /// </summary>
-        public void UpdateCache()
+        /**
+         * 更新缓存
+         */
+        public void UpdateCache(string text)
         {
-            inputTextCache = inputTbx.Text;
+            this.cache = new string(text);
+        }
+        
+        public string ReadCache()
+        {
+            return new string(this.cache);
         }
 
         /// <summary>
@@ -114,54 +133,8 @@ namespace MarkDownAvalonia.Controls
         /// </summary>
         private void Init()
         {
-            postItemTitleTextBlock = this.FindControl<TextBlock>("itemTitleTbk");
-            postItemTimeTextBlock = this.FindControl<TextBlock>("itemTimeTbk");
-        }
-
-        /// <summary>
-        /// reset timer to auto save text
-        /// </summary>
-        public void ConfigTimer()
-        {
-            // config timer
-            autoSaveTimer = new Timer(30 * 1000);
-            autoSaveTimer.Elapsed += Elapsed;
-            autoSaveTimer.AutoReset = true;
-            autoSaveTimer.Enabled = true;
-            autoSaveTimer.Start();
-        }
-
-        public void Elapsed(object sender, ElapsedEventArgs e)
-        {
-            // reduce write times
-            if (isExists)
-            {
-                if (autoSaveTimer != null && autoSaveTimer.Enabled && fileInfo != null && !inputTextCache.Equals(inputTbx.Text))
-                {
-                    if (inputTbx.Text.StartsWith(inputTextCache))
-                    {
-                        using (var sw = new FileStream(fileInfo.FullName, FileMode.Append))
-                        {
-                            sw.Write(Encoding.UTF8.GetBytes(inputTbx.Text.Substring(inputTextCache.Length)));
-                            sw.Flush();
-                        }
-                    }
-                    else
-                    {
-                        using (var sw = new FileStream(fileInfo.FullName, FileMode.Create))
-                        {
-                            sw.Write(Encoding.UTF8.GetBytes(inputTbx.Text));
-                            sw.Flush();
-                        }
-                    }
-
-                    inputTextCache = inputTbx.Text;
-                }
-            }
-            else
-            {
-                inputTextCache = inputTbx.Text;
-            }
+            postTitle = this.FindControl<TextBlock>("itemTitleTbk");
+            postTime = this.FindControl<TextBlock>("itemTimeTbk");
         }
 
         /// <summary>
@@ -178,14 +151,10 @@ namespace MarkDownAvalonia.Controls
         /// </summary>
         public void RemoveHandlers()
         {
-            PointerEnter -= GetFocus;
-            PointerLeave -= LostFocus;
-            if (autoSaveTimer != null)
-            {
-                autoSaveTimer.Enabled = false;
-                autoSaveTimer.Stop();
-                autoSaveTimer = null;
-            }
+            Background = itemPanelBackground;
+            Foreground = itemPanelForeground;
+            this.seleted = false;
+            AutoSaveHolder.relase(this);
         }
 
         /// <summary>
@@ -195,8 +164,11 @@ namespace MarkDownAvalonia.Controls
         /// <param name="e"></param>
         public void GetFocus(object sender, PointerEventArgs e)
         {
-            Background = itemPanelFocusBackground;
-            Foreground = itemPanelFocusForeground;
+            if (!seleted)
+            {
+                Background = itemPanelFocusBackground;
+                Foreground = itemPanelFocusForeground;
+            }
         }
 
         /// <summary>
@@ -206,41 +178,103 @@ namespace MarkDownAvalonia.Controls
         /// <param name="e"></param>
         public void LostFocus(object sender, PointerEventArgs e)
         {
-            Background = itemPanelBackground;
-            Foreground = itemPanelForeground;
+            if (!seleted)
+            {
+                Background = itemPanelBackground;
+                Foreground = itemPanelForeground;
+            }
         }
 
-        public void Clicked(object sender, PointerPressedEventArgs e)
+        private void Rename_OnClick(object? sender, RoutedEventArgs e)
         {
-            if (isExists)
+            e.Route = RoutingStrategies.Direct;
+            RenamePanel panel = new RenamePanel(fileInfo);
+            panel.Width = mainWindow.Width / 4.0;
+            panel.Height = mainWindow.Height / 5.0;
+            panel.Register((e, arg) =>
             {
-                // file exists, read file
-                var text = Read(fileInfo.FullName);
-                inputTbx.Text = text;
-                inputTextCache = text;
-            }
-            else
-            {
-                inputTbx.Text = inputTextCache;
-            }
+                var txt = panel.getFileName();
+                if (string.IsNullOrWhiteSpace(txt) || !txt.EndsWith(".md") || !fileInfo.Exists)
+                {
+                    return;
+                }
 
-            ConfigTimer();
+                var dir = fileInfo.DirectoryName;
+                var newFileFullPath = Path.Combine(dir, txt);
+                var oldFileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileInfo.Name);
+                var newFileNameWithoutExtension = Path.GetFileNameWithoutExtension(txt);
+                
+                // rename image folder 
+                var sourceImagePath = Path.Combine(dir, Path.GetFileNameWithoutExtension(oldFileNameWithoutExtension));
+                if (Directory.Exists(sourceImagePath))
+                {
+                    var newImagePath = Path.Combine(dir, newFileNameWithoutExtension);
+                    Directory.Move(sourceImagePath, newImagePath);
+                }
+                // rewrite image url
+                var oldFileFullName = fileInfo.FullName;
+                var content = File.ReadAllText(oldFileFullName);
+                var newContent = content.Replace($"![image]({oldFileNameWithoutExtension}/",
+                    $"![image]({newFileNameWithoutExtension}/");
+                File.WriteAllText(oldFileFullName, newContent);
+                // overwrite
+                fileInfo.MoveTo(newFileFullPath, true);
+                
+                fileInfo = new FileInfo(newFileFullPath);
+                var name = Path.GetFileNameWithoutExtension(fileInfo.FullName);
+                var date = fileInfo.LastWriteTime.ToString(DatePattern);
+                postTitle.Text = name;
+                postTime.Text = date;
+                panel.Close();
+            });
+            panel.ShowDialog(mainWindow);
         }
 
-        /// <summary>
-        /// read text from a file
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        private static string Read(string path)
+        private void Open_OnClick(object? sender, RoutedEventArgs e)
         {
-            var text = string.Empty;
-            using (var sr = new StreamReader(path, Encoding.UTF8))
+            if (!this.isExists || this.fileInfo == null || string.IsNullOrWhiteSpace(this.fileInfo.DirectoryName))
             {
-                text = sr.ReadToEnd();
+                e.Handled = true;
+                return;
             }
 
-            return text;
+            Process.Start(new ProcessStartInfo(this.fileInfo.FullName)
+            {
+                UseShellExecute = true
+            });
+        }
+
+        public void Pressed(object? sender, PointerPressedEventArgs e)
+        {
+            // 必须左键
+            if (!e.GetCurrentPoint(this).Properties.IsLeftButtonPressed)
+            {
+                return;
+            }
+
+            selectedSelf();
+        }
+
+        public void selectedSelf()
+        {
+            // 重置背景色
+            foreach (var control in cacheControls)
+            {
+                control.RemoveHandlers();
+            }
+
+            // current 
+            Background = itemPanelFocusBackground;
+            Foreground = itemPanelFocusForeground;
+            seleted = true;
+
+            // 获取自动保存
+            if (!AutoSaveHolder.start(this))
+            {
+                throw new Exception("invalid operation");
+            }
+            
+            AutoSaveHolder.restore(this);
         }
     }
 }

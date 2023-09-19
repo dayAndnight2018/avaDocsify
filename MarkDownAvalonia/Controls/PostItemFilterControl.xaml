@@ -1,0 +1,33 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="120"
+             x:Class="MarkDownAvalonia.Controls.PostItemFilterControl"
+             Background="#312F2F" Foreground="black" Padding="10">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!--<ColumnDefinition Width="auto" />-->
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <!--<PathIcon Grid.Column="0" Margin="2" Width="15" Height="15" Foreground="white"
+                                  Data="M914.5 853.2L791 729.6c-14.2-14.2-35.4-15.9-52.1-6.4C801.4 656.8 840 567.5 840 469.1 840 264 673.7 97.8 468.6 97.8c-205 0-371.3 166.2-371.3 371.3 0 205.1 166.2 371.3 371.3 371.3 98.4 0 187.7-38.6 254.1-101.1-9.5 16.7-7.8 37.9 6.4 52.1L852.8 915c17.1 17.1 44.7 17.1 61.8 0 17-17.1 17-44.8-0.1-61.8z m-445.9-56.5C288 796.7 141 649.7 141 469.1c0-180.7 147-327.6 327.6-327.6 180.7 0 327.6 147 327.6 327.6 0.1 180.6-146.9 327.6-327.6 327.6z" />-->
+
+        <!-- <Border  Classes="searchTbxBorder" CornerRadius="15" Background="white"> -->
+            <TextBox Grid.Column="0" VerticalAlignment="Center" Watermark="search post" FontSize="14" Foreground="black"
+                     BorderThickness="0" AcceptsReturn="False" Name="searchBox" 
+                     Background="#FFFFFF" FontFamily="Microsoft YaHei,Simsun,苹方,苹方-简,宋体-简" CornerRadius="15">
+            </TextBox>
+        <!-- </Border> -->
+
+        <Button Grid.Column="1" Margin="2" Classes="tab" Click="hideSelf">
+            <StackPanel Orientation="Horizontal">
+                <PathIcon Width="8" Height="8" Foreground="white"
+                                  Data="M576 512l277.333333 277.333333-64 64-277.333333-277.333333L234.666667 853.333333 170.666667 789.333333l277.333333-277.333333L170.666667 234.666667 234.666667 170.666667l277.333333 277.333333L789.333333 170.666667 853.333333 234.666667 576 512z" />
+        
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

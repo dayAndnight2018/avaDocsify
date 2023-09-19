@@ -1,5 +1,6 @@
 using System.IO;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace MarkDownAvalonia.Data
 {
@@ -12,7 +13,7 @@ namespace MarkDownAvalonia.Data
         /// <summary>
         /// git push source
         /// </summary>
-        public static bool GitPush()
+        public static bool GitPush(string commitMsg)
         {
             var path = CommonData.config.RootDirectory;
             if (!string.IsNullOrWhiteSpace(path))
@@ -28,7 +29,7 @@ namespace MarkDownAvalonia.Data
                 sb.Append(result);
                 
                 // commit update
-                result = git.Run(@"commit -m ""by avaDocsify""");
+                result = git.Run($"commit -m \"{commitMsg} ——by avaDocsify\"");
                 sb.Append(result);
                 
                 // push update
@@ -48,22 +49,13 @@ namespace MarkDownAvalonia.Data
         {
             var path = CommonData.config.RootDirectory;
             var address = CommonData.config.GitAddress;
-            
             if (!string.IsNullOrWhiteSpace(path) && !string.IsNullOrWhiteSpace(address))
             {
-                var sb = new StringBuilder();
-                var git = new CommandRunner("git", Path.Combine(path, "blog"));
-                
-                // checkout branch
-                var result = git.Run("checkout hexo");
-                sb.Append(result);
-                
-                // pull code
-                result = git.Run("pull");
-                sb.Append(result);
+                var git = new CommandRunner("git", path);
+                // pull
+                git.Run("pull");
                 return true;
             }
-
             return false;
         }
 
@@ -182,7 +174,7 @@ namespace MarkDownAvalonia.Data
         /// <summary>
         /// make sure the directory exists (if not exist, create it)
         /// </summary>
-        public static void MakeDirectory(string path)
+        public static void ensureDirectoryExists(string path)
         {
             if (!Directory.Exists(path))
             {
@@ -193,15 +185,45 @@ namespace MarkDownAvalonia.Data
         /// <summary>
         /// make sure file exists
         /// </summary>
-        public static void MakeFile(string file)
+        public static void CreateFile(string file)
         {
             if (!File.Exists(file))
             {
-                using (File.Create(file)) {
+                File.Create(file).Close();
+            }
+        }
+
+        /// <summary>
+        /// 创建文件并填充内容
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="content"></param>
+        public static void CreateFileWithContent(string fileName, string content)
+        {
+            using (var sw = new FileStream(fileName, FileMode.Create))
+            {
+                sw.Write(Encoding.UTF8.GetBytes(content));
+                sw.Flush();
+            }
+        }
+
+        /// <summary>
+        /// 创建文件
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="templateFileName"></param>
+        public static void MakeFileWithTemplate(string filePath, string templateFileName)
+        {
+            using (var sw = new FileStream(filePath, FileMode.Create))
+            {
+                using (var sr = new StreamReader(templateFileName, Encoding.UTF8))
+                {
+                    sw.Write(Encoding.UTF8.GetBytes(sr.ReadToEnd()));
+                    sw.Flush();
                 }
             }
         }
-        
+
         /// <summary>
         /// delete files within given directory
         /// </summary>
@@ -230,7 +252,7 @@ namespace MarkDownAvalonia.Data
         /// </summary>
         public static void MakeItEmpty(string path)
         {
-            MakeDirectory(path);
+            ensureDirectoryExists(path);
             ClearDirectory(path);
         }
     }

@@ -1,15 +1,17 @@
 using System;
+using System.Timers;
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 
 namespace MarkDownAvalonia.Controls
 {
-    public class SuccessMessageBox : Window
+    public partial class SuccessMessageBox : Window
     {
         private string title;
         private string content;
         private Label messageLabel;
+        private Timer timer;
         
         public SuccessMessageBox(string title, string content)
         {
@@ -18,15 +20,19 @@ namespace MarkDownAvalonia.Controls
             this.content = content;
             this.messageLabel = this.FindControl<Label>("message");
             this.messageLabel.Content = content;
+
+            timer = new Timer(1500);
+            timer.Enabled = true;
+            timer.Elapsed += (sender, args) =>
+            {
+                timer.Stop();
+                Dispatcher.UIThread.InvokeAsync(() => { this.Close(); });
+            };
+            timer.Start();
         }
 
         public SuccessMessageBox():this("Message",String.Empty)
         {
-        }
-        
-        public void CloseWindow(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

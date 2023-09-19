@@ -7,7 +7,7 @@ namespace MarkDownAvalonia.Controls
     /// <summary>
     /// error message box
     /// </summary>
-    public class ErrorMessageBox : Window
+    public partial class ErrorMessageBox : Window
     {
         private readonly string title;
         private readonly string content;

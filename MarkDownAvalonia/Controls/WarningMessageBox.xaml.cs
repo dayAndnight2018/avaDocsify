@@ -6,7 +6,7 @@ using Avalonia.Markup.Xaml;
 
 namespace MarkDownAvalonia.Controls
 {
-    public class WarningMessageBox : Window
+    public partial class WarningMessageBox : Window
     {
         private string title;
         private string content;

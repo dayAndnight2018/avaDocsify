@@ -8,7 +8,7 @@ using Markdown.Avalonia;
 
 namespace MarkDownAvalonia.Controls
 {
-    public class EditorWindow : Window
+    public partial class EditorWindow : Window
     {
         public EditorWindow()
         {

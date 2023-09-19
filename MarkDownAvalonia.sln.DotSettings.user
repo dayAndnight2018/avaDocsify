@@ -5,4 +5,14 @@
   &lt;Assembly Path="/Users/dxm/.nuget/packages/markdown.avalonia/0.10.0-a3/lib/net47/Markdown.Avalonia.dll" /&gt;
   &lt;Assembly Path="/Users/dxm/.nuget/packages/markdown.avalonia/0.10.0-a4/lib/net47/Markdown.Avalonia.dll" /&gt;
   &lt;Assembly Path="/Users/dxm/.nuget/packages/markdown.avalonia/0.10.4/lib/netcoreapp2.0/Markdown.Avalonia.dll" /&gt;
+  &lt;Assembly Path="/Users/dxm/.nuget/packages/avalonia.avaloniaedit/0.10.0/lib/netstandard2.0/AvaloniaEdit.dll" /&gt;
+  &lt;Assembly Path="/Users/dxm/.nuget/packages/markdown.avalonia.syntaxhigh/0.10.14/lib/netcoreapp2.0/Markdown.Avalonia.SyntaxHigh.dll" /&gt;
+  &lt;Assembly Path="/Users/dxm/.nuget/packages/markdown.avalonia.tight/0.10.14/lib/netcoreapp2.0/Markdown.Avalonia.dll" /&gt;
+  &lt;Assembly Path="/Users/dxm/.nuget/packages/avalonia.desktop/11.0.4/lib/netstandard2.0/Avalonia.Desktop.dll" /&gt;
+  &lt;Assembly Path="/Users/dxm/.nuget/packages/avalonia/0.10.18/lib/netcoreapp2.0/Avalonia.Controls.dll" /&gt;
+  &lt;Assembly Path="/Users/dxm/.nuget/packages/avalonia/11.0.4/ref/netcoreapp2.0/Avalonia.Base.dll" /&gt;
+  &lt;Assembly Path="/Users/dxm/.nuget/packages/avalonia/0.10.18/lib/netcoreapp2.0/Avalonia.Visuals.dll" /&gt;
+  &lt;Assembly Path="/Users/dxm/.nuget/packages/avalonia/0.10.18/lib/netcoreapp2.0/Avalonia.Styling.dll" /&gt;
+  &lt;Assembly Path="/Users/dxm/.nuget/packages/avalonia.native/11.0.4/lib/netstandard2.0/Avalonia.Native.dll" /&gt;
+  &lt;Assembly Path="/Users/dxm/.nuget/packages/avalonia/0.10.18/lib/netcoreapp2.0/Avalonia.Base.dll" /&gt;
 &lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>

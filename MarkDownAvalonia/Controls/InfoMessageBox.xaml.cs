@@ -8,7 +8,7 @@ namespace MarkDownAvalonia.Controls
     /// <summary>
     /// info message box
     /// </summary>
-    public class InfoMessageBox : Window
+    public partial class InfoMessageBox : Window
     {
         private string title;
         private string content;

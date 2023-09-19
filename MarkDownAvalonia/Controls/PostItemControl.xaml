@@ -4,7 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="120"
              x:Class="MarkDownAvalonia.Controls.PostItemControl"
-             Background="#312F2F" BorderThickness="0 1 0 0" BorderBrush="#473A3B" PointerEnter="GetFocus" PointerLeave="LostFocus" Foreground="silver" PointerPressed="Clicked">
+             Background="#312F2F" BorderThickness="0 1 0 0" BorderBrush="#473A3B" 
+             PointerEntered="GetFocus" PointerExited="LostFocus" Foreground="silver" PointerPressed="Pressed" Padding="5">
+    <UserControl.ContextMenu>
+        <ContextMenu Background="#313335" Foreground="#FFFFFF">
+            <MenuItem Header="Rename" Click="Rename_OnClick"/>
+            <MenuItem Header="Open in Explorer" Click="Open_OnClick"/>
+        </ContextMenu>
+    </UserControl.ContextMenu>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -16,7 +23,20 @@
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Name="itemTitleTbk" FontSize="16" Margin="5" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Grid.ColumnSpan="2" TextTrimming="CharacterEllipsis">这是测试标题,再长一点也是可以的这是测试标题,再长一点也是可以的</TextBlock>
-        <TextBlock Name="itemTimeTbk" Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5" TextTrimming="CharacterEllipsis">2020/12/01 11:11:00</TextBlock>
+        <TextBlock Name="itemTitleTbk" 
+                   FontSize="16" Padding="5 8" 
+                   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                   VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Start"
+                   TextTrimming="CharacterEllipsis" 
+                   Text="这是测试标题,再长一点也是可以的这是测试标题,再长一点也是可以的">
+            
+        </TextBlock>
+        <TextBlock Name="itemTimeTbk" 
+                   Grid.Row="2" Grid.Column="0" 
+                   VerticalAlignment="Bottom" HorizontalAlignment="Left" TextAlignment="Left"
+                   Padding="5 8" 
+                   TextTrimming="CharacterEllipsis" Text="2020/12/01 11:11:00">
+            
+        </TextBlock>
     </Grid>
 </UserControl>

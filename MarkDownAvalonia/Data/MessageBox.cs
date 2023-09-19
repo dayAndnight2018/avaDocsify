@@ -33,6 +33,7 @@ namespace MarkDownAvalonia.Data
                 Width = MESSAGE_BOX_WIDTH,
                 Height = MESSAGE_BOX_HEIGHT
             };
+            successMessageBox.ShowActivated = true;
             return successMessageBox.ShowDialog(sender);
         }
         

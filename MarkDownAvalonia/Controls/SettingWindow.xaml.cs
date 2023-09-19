@@ -7,7 +7,7 @@ using MarkDownAvalonia.Data;
 
 namespace MarkDownAvalonia.Controls
 {
-    public class SettingWindow : Window
+    public partial class SettingWindow : Window
     {
         private TextBox gitAddressTbx;
         private TextBox rootDirectoryTbx;
