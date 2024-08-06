@@ -29,9 +29,9 @@ namespace MarkDownAvalonia.Controls.Command
         }
         
         // 销毁
-        public static void relase(PostItemControl postItemControl)
+        public static void relase(PostItemControl postItemControl, bool saveNow = true)
         {
-            _autoSaver.releaseInstance(postItemControl);
+            _autoSaver.releaseInstance(postItemControl, saveNow);
         }
         
         // 强制保存

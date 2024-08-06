@@ -41,7 +41,7 @@ namespace MarkDownAvalonia.Controls.Command
         } 
 
         // 释放自动保存
-        public bool releaseInstance(PostItemControl postItemControl)
+        public bool releaseInstance(PostItemControl postItemControl, bool saveNow = true)
         {
             lock (USE_LOCK)
             {
@@ -51,7 +51,10 @@ namespace MarkDownAvalonia.Controls.Command
                 }
 
                 // 留存一下数据
-                forceSave(postItemControl);
+                if (saveNow)
+                {
+                    forceSave(postItemControl);
+                }
                 
                 cache = string.Empty;
                 holder = null;

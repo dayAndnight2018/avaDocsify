@@ -1,0 +1,78 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="420" d:DesignHeight="360"
+        x:Class="MarkDownAvalonia.Controls.ProjectWindow" Background="#303030" WindowStartupLocation="CenterOwner"
+        SystemDecorations="None"
+        CanResize="False" CornerRadius="20" >
+    <Window.Styles>
+        <Style Selector="Button.tab">
+            <Setter Property="Background" Value="#303030" />
+            <Setter Property="Foreground" Value="white" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="10 0 10 0" />
+        </Style>
+
+        <Style Selector="Button.tab /template/ ContentPresenter">
+            <Setter Property="CornerRadius" Value="10" />
+        </Style>
+
+        <Style Selector="Button.tab:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#C75049" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+    </Window.Styles>
+
+    <Border BorderThickness="0 0 3 3" Name="windowBorder">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#303030">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                
+                <!-- 标题栏 -->
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <Border HorizontalAlignment="Center" BorderThickness="1" BorderBrush="white" Width="30" Height="30"
+                            CornerRadius="15" Margin="10" Background="white">
+                        <PathIcon Margin="5"
+                                  Data="M670.4 329.344L512 487.744 353.6 329.344a31.936 31.936 0 0 0-25.344-9.216l-2.56 0.384a32 32 0 0 0-37.76 31.488l0.064 320a32 32 0 0 0 64 0l-0.064-253.76 137.408 137.408a32 32 0 0 0 40.832 3.712l4.48-3.712L672 418.24V672a32 32 0 1 0 64 0v-320A32 32 0 0 0 704 320l-5.76 0.512-2.496-0.384a31.936 31.936 0 0 0-25.344 9.216z" />
+                    </Border>
+                    <Label Name="title" VerticalAlignment="Center" Foreground="white" FontSize="16">Open Project</Label>
+                </StackPanel>
+                
+                
+                <Button Grid.Column="2" Width="30" Height="30" Foreground="white" Background="#C75049"
+                        BorderThickness="0"
+                        Margin="10 0" Click="EnterWindow">
+                    <PathIcon Foreground="white"
+                              Data="M972.146238 0.005962h-3.629346c-15.683959 0.907336-246.277047 15.683959-374.341111 93.714898-27.479334 16.850535-36.16384 49.12579-41.867098 104.602935a94.362995 94.362995 0 0 0-67.920617-31.627158 85.16001 85.16001 0 0 0-52.625517 18.924447c-47.051878 37.330416-207.391197 171.356977-277.256107 332.862872C68.698334 717.320267 82.826859 863.66068 83.474957 869.752797c0 1.555434 0.907336 2.981248 1.166575 4.536682-47.959214 61.439642-77.123602 104.732555-80.364089 109.398857a25.9239 25.9239 0 0 0 7.129073 35.515743A25.9239 25.9239 0 0 0 25.9239 1024a25.9239 25.9239 0 0 0 21.387217-11.406516c0-1.036956 27.479334-40.830142 72.716539-98.899677h1.685053A250.295251 250.295251 0 0 0 181.467298 920.304401c99.547775 0 305.902016-38.88585 570.325793-296.958271C987.570958 393.012282 1019.716594 99.294498 1023.086701 58.723595A47.829595 47.829595 0 0 0 1023.994038 51.853762a51.070082 51.070082 0 0 0-51.8478-51.8478zM716.406968 586.404573C461.575034 835.533249 267.405025 868.456602 181.467298 868.456602c-10.499179 0-18.794827 0-25.9239-1.166576 87.363542-107.195325 220.353147-251.202588 368.378615-349.972645a25.9239 25.9239 0 0 0-28.51629-42.644815c-145.173838 97.214624-272.200947 232.148522-361.89764 338.825369a795.215623 795.215623 0 0 1 67.531759-274.274859c64.809749-151.136335 221.001245-280.626214 262.220245-312.901469a33.182592 33.182592 0 0 1 20.998359-8.166029c45.237205 0 81.401045 108.750759 100.195872 108.75076h1.944293c16.202437-7.517931 9.591843-173.560508 34.349167-188.72599C741.034672 64.815712 972.146238 51.853762 972.146238 51.853762s-19.054066 303.180007-255.73927 534.550811z" />
+                </Button>
+                <Button Grid.Column="3" Width="30" Height="30" Foreground="white" Background="#C75049"
+                        BorderThickness="0"
+                        Margin="10 0" Click="CloseWindow">
+                    <PathIcon Foreground="white"
+                              Data="M1023.997 114.97 911.408 2.388 516.149 397.629 118.5 0 5.91 112.585l397.649 397.629L7.107 906.648l112.587 112.59 396.454-396.439 395.259 395.249 112.59-112.59L628.738 510.214 1023.997 114.97z" />
+                </Button>
+            </Grid>
+
+            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden"
+                          Name="listPanel">
+                <StackPanel Orientation="Vertical" Name="projectItemsPanel" />
+            </ScrollViewer>
+        </Grid>
+    </Border>
+
+</Window>

@@ -17,9 +17,7 @@ namespace MarkDownAvalonia.Controls
             AvaloniaXamlLoader.Load(this);
             this.title = title;
             this.content = content;
-            
-            var messageLabel = this.FindControl<Label>("message");
-            messageLabel.Content = content;
+            this.FindControl<Label>("Message").Content = content;
         }
 
         public ErrorMessageBox():this("Message",string.Empty) { }

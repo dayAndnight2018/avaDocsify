@@ -34,10 +34,10 @@
                                 <PathIcon FontWeight="UltraBold" Foreground="#C0015A" Data="M265.28 310.72a32 32 0 0 1 45.44-45.44l448 448a32 32 0 0 1-45.44 45.44z M713.28 265.28a32 32 0 0 1 45.44 45.44l-448 448a32 32 0 0 1-45.44-45.44z" HorizontalAlignment="Center"></PathIcon>
                         </Border>
                 </Grid>
-                <Label Grid.Row="3" HorizontalAlignment="Center" FontSize="15" Name="message" Content="这是错误的内容" />
+                <Label Grid.Row="3" HorizontalAlignment="Center" FontSize="15" Name="Message" Content="这是错误的内容" />
                 <Grid Grid.Row="5">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 10 5">
-                                <Button Classes="confirm" Content="OK" Click="CloseWindow" />
+                                <Button Classes="confirm" Content="OK" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="CloseWindow" />
                         </StackPanel>
                 </Grid>
         </Grid>

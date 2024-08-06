@@ -10,7 +10,6 @@ namespace MarkDownAvalonia.Controls
     {
         private string title;
         private string content;
-        private Label messageLabel;
         private Timer timer;
         
         public SuccessMessageBox(string title, string content)
@@ -18,8 +17,7 @@ namespace MarkDownAvalonia.Controls
             AvaloniaXamlLoader.Load(this);
             this.title = title;
             this.content = content;
-            this.messageLabel = this.FindControl<Label>("message");
-            this.messageLabel.Content = content;
+            this.FindControl<Label>("dialogTitle").Content = content;
 
             timer = new Timer(1500);
             timer.Enabled = true;

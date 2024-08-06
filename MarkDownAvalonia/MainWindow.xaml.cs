@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ using MarkDownAvalonia.Controls.Command;
 using MarkDownAvalonia.Data;
 using MarkDownAvalonia.Enums;
 using MarkDownAvalonia.Extends;
+using SkiaSharp;
 
 namespace MarkDownAvalonia
 {
@@ -52,6 +54,11 @@ namespace MarkDownAvalonia
         private const string Suffix = ".md";
 
         private bool hidden = false;
+
+        private static string TAB_SPACE = "        ";
+        
+        private static string CODE_BLOCK_HEAD = $"```{Environment.NewLine}";
+        private static string CODE_BLOCK_TXT = CODE_BLOCK_HEAD + $"{Environment.NewLine}```{Environment.NewLine}";
 
         /**
          * theme
@@ -98,10 +105,15 @@ namespace MarkDownAvalonia
             // make sure directory exists
             GitUtils.ensureDirectoryExists(CommonData.config.PostDirectory);
             // clear selected
-            if (selectedItem != null)
+            // if (selectedItem != null)
+            // {
+            //     selectedItem.RemoveHandlers();
+            //     selectedItem = null;
+            // }
+            
+            foreach (var control in cacheControls)
             {
-                selectedItem.RemoveHandlers();
-                selectedItem = null;
+                control.RemoveHandlers();
             }
 
             inputTbx.Text = string.Empty;
@@ -116,7 +128,6 @@ namespace MarkDownAvalonia
             foreach (var file in files)
             {
                 var current = new PostItemControl(file, this.inputTbx, this, cacheControls);
-                selectedItem = current;
                 articleListPanel.Children.Add(current);
             }
 
@@ -147,6 +158,11 @@ namespace MarkDownAvalonia
                 return;
             }
 
+            loadSln(path);
+        }
+
+        public void loadSln(string path)
+        {
             string[] files = Directory.GetFiles(path);
             if (files.Length == 0 || ConfigManager.SlnExists(path))
             {
@@ -224,16 +240,17 @@ namespace MarkDownAvalonia
         /// <param name="e"></param>
         public async void SavePost(object sender, RoutedEventArgs e)
         {
-            if (selectedItem == null)
+            PostItemControl selected = cacheControls.Find(ele => ele.seleted);
+            if (selected == null)
                 return;
 
-            // current selected item is local not temp
-            if (selectedItem.isExists)
+            // selected is not temp
+            if (selected.isExists)
             {
                 // exists
-                using (var sw = new FileStream(selectedItem.fileInfo.FullName, FileMode.Create))
+                using (var sw = new FileStream(selected.fileInfo.FullName, FileMode.Create))
                 {
-                    sw.Write(Encoding.Unicode.GetBytes(inputTbx.Text));
+                    sw.Write(Encoding.UTF8.GetBytes(inputTbx.Text));
                     sw.Flush();
                 }
 
@@ -272,9 +289,9 @@ namespace MarkDownAvalonia
 
                     // deal for present
                     var fileName = Path.GetFileNameWithoutExtension(result);
-                    selectedItem.UpdateItemPresent(fileName);
-                    selectedItem.isExists = true;
-                    selectedItem.fileInfo = new FileInfo(result);
+                    selected.UpdateItemPresent(fileName);
+                    selected.isExists = true;
+                    selected.fileInfo = new FileInfo(result);
                     await MessageBox.ShowSuccess(this, "Saved success!");
 
                     filterTbx.IsVisible = true;
@@ -383,12 +400,27 @@ namespace MarkDownAvalonia
         /// </summary>
         public async void DiscardPost(object sender, RoutedEventArgs e)
         {
-            if (selectedItem == null)
-                return;
+            PostItemControl postItemControl = selectedItem;
 
-            if (selectedItem.isExists)
+            foreach (var control in cacheControls)
             {
-                if (!File.Exists(selectedItem.fileInfo.FullName))
+                if (control.seleted)
+                {
+                    postItemControl = control;
+                    break;
+                }
+            }
+
+            if (postItemControl == null)
+            {
+                return;
+            }
+
+            var exists = postItemControl.isExists;
+            var fileInfo = postItemControl.fileInfo;
+            if (exists)
+            {
+                if (!File.Exists(fileInfo.FullName))
                 {
                     await MessageBox.ShowError(this, "File not exists!");
                 }
@@ -397,9 +429,9 @@ namespace MarkDownAvalonia
                 if (await MessageBox.ShowWarning(this, "Deleting file, continue?"))
                 {
                     // delete from disk
-                    File.Delete(selectedItem.fileInfo.FullName);
+                    File.Delete(fileInfo.FullName);
 
-                    RemoveItemInPanel();
+                    RemoveItemInPanel(postItemControl);
 
                     await MessageBox.ShowSuccess(this, "Delete success!");
                 }
@@ -408,7 +440,7 @@ namespace MarkDownAvalonia
             {
                 if (await MessageBox.ShowWarning(this, "Deleting file, continue?"))
                 {
-                    RemoveItemInPanel();
+                    RemoveItemInPanel(postItemControl);
                 }
             }
         }
@@ -416,16 +448,16 @@ namespace MarkDownAvalonia
         /// <summary>
         /// remove post item in panel
         /// </summary>
-        private void RemoveItemInPanel()
+        private void RemoveItemInPanel(PostItemControl postItemControl)
         {
             // remove event handler
-            selectedItem.RemoveHandlers();
+            postItemControl.RemoveHandlers(false);
             // remove 
-            articleListPanel.Children.Remove(selectedItem);
+            articleListPanel.Children.Remove(postItemControl);
             // remove cache
-            cacheControls.TryRemove(selectedItem);
+            cacheControls.TryRemove(postItemControl);
             // remove selected
-            selectedItem = null;
+            postItemControl = null;
             // clear input text box
             inputTbx.Text = string.Empty;
         }
@@ -452,6 +484,25 @@ namespace MarkDownAvalonia
         /// <param name="e"></param>
         public void ExitButtonClicked(object sender, RoutedEventArgs e)
         {
+            if (CommonData.config != null)
+            {
+                List<Configuration> configurations = new List<Configuration>();
+                if (CommonData.projectConfig != null && CommonData.projectConfig.Count > 0)
+                {
+                    configurations.AddRange(CommonData.projectConfig);
+                }
+                if (!configurations.Exists(ele=>ele.RootDirectory.Equals(CommonData.config.RootDirectory)))
+                {
+                    configurations.Add(CommonData.config);
+                    ConfigManager.saveProjectConfig(configurations);
+                }
+            }
+            
+            if (ServerHolder.isRunning())
+            {
+                ServerHolder.StopAsync();
+            }
+            
             Close();
         }
 
@@ -522,16 +573,17 @@ namespace MarkDownAvalonia
                 var format = await this.Clipboard.GetFormatsAsync();
                 if (format.Length > 0)
                 {
-                    if (format[0].Equals("public.png") && selectedItem != null && selectedItem.isExists)
+                    PostItemControl currentSelected = findSelected();
+                    if (format[0].Equals("public.png") && currentSelected != null && currentSelected.isExists)
                     {
                         var data = await this.Clipboard.GetDataAsync(format[1]) as byte[];
                         var stream = new MemoryStream(data);
                         var image = new Bitmap(stream);
                         var path = Path.Combine(CommonData.config.PostDirectory,
-                            Path.GetFileNameWithoutExtension(selectedItem.fileInfo.FullName));
+                            Path.GetFileNameWithoutExtension(currentSelected.fileInfo.FullName));
                         GitUtils.ensureDirectoryExists(path);
                         var fileName = Guid.NewGuid().ToString() + ".png";
-                        var filePath = Path.Combine(Path.GetFileNameWithoutExtension(selectedItem.fileInfo.FullName),
+                        var filePath = Path.Combine(Path.GetFileNameWithoutExtension(currentSelected.fileInfo.FullName),
                             fileName);
                         image.Save(Path.Combine(path, fileName));
                         inputTbx.Text =
@@ -546,7 +598,8 @@ namespace MarkDownAvalonia
             if (key == Key.Tab)
             {
                 e.Handled = true;
-                inputTbx.Text = inputTbx.Text.Insert(this.inputTbx.CaretIndex, "        ");
+                inputTbx.Text = inputTbx.Text.Insert(this.inputTbx.CaretIndex, TAB_SPACE);
+                this.inputTbx.CaretIndex = this.inputTbx.CaretIndex + TAB_SPACE.Length;
                 return;
             }
 
@@ -683,7 +736,7 @@ namespace MarkDownAvalonia
 
         protected override void OnResized(WindowResizedEventArgs e)
         {
-            if (!hidden)
+            if (!hidden && mainGrid != null)
             {
                 mainGrid.ColumnDefinitions[0].Width = new GridLength(this.Width / 5);
             }
@@ -817,6 +870,92 @@ namespace MarkDownAvalonia
         private void Paste_OnClick(object? sender, RoutedEventArgs e)
         {
             inputTbx.Paste();
+        }
+
+        private PostItemControl findSelected()
+        {
+            PostItemControl res = null;
+            foreach (var control in cacheControls)
+            {
+                if (control.seleted)
+                {
+                    res = control;
+                    break;
+                }
+            }
+
+            return res;
+        }
+
+        private async void InsertTable(object? sender, RoutedEventArgs e)
+        {
+            TableProperties res = await new InsertTable(){Width = 500, Height = 320}.ShowDialog<TableProperties>(this);
+            if (res == null)
+            {
+                return;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            // 首行
+            sb.Append(Environment.NewLine);
+            sb.Append("|");
+            for (int i = 0; i < res.Columns; i++)
+            {
+                sb.Append("\t|");
+            }
+            
+            // 对齐行
+            sb.Append(Environment.NewLine);
+            sb.Append("|");
+            for (int i = 0; i < res.Columns; i++)
+            {
+                sb.Append(":-:|");
+            }
+            
+            // 数据行
+            for (int i = 0; i < res.Rows; i++)
+            {
+                sb.Append(Environment.NewLine);
+                sb.Append("|");
+                for (int j = 0; j < res.Columns; j++)
+                {
+                    sb.Append("\t|");
+                }
+            }
+            
+            sb.Append(Environment.NewLine);
+            if (this.inputTbx.Text == null)
+            {
+                this.inputTbx.Text = sb.ToString();
+            }
+            else
+            {
+                this.inputTbx.Text = this.inputTbx.Text.Insert(this.inputTbx.CaretIndex, sb.ToString());
+            }
+        }
+
+        private void Code_Block_OnClick(object? sender, RoutedEventArgs e)
+        {
+            this.inputTbx.Text = this.inputTbx.Text.Insert(this.inputTbx.CaretIndex, CODE_BLOCK_TXT);
+            this.inputTbx.CaretIndex = this.inputTbx.CaretIndex + CODE_BLOCK_HEAD.Length;
+        }
+        
+            
+        public void ExportImage(object sender, RoutedEventArgs e)
+        {
+            // var skBitmap = ImageExportHelper.ExportControlImageBasic(this.markdownPreview);
+            // skBitmap.Encode(new FileStream("export.png", FileMode.Create), SKEncodedImageFormat.Png, 100);
+            ConfigManager.publishPreview();
+            String baseUrl = new FileInfo("preview.html").DirectoryName;
+            GitUtils.copyFile(Path.Combine(baseUrl, "template", "css"), Path.Combine(CommonData.config.RootDirectory, "css"));
+            GitUtils.copyFile(Path.Combine(baseUrl, "template", "js"), Path.Combine(CommonData.config.RootDirectory, "js"));
+            GitUtils.copyFile(Path.Combine(baseUrl, "template", "font"), Path.Combine(CommonData.config.RootDirectory, "font"));
+            
+            ServerHolder.Start();
+            Process.Start(new ProcessStartInfo("http://localhost:8851/")
+            {
+                UseShellExecute = true
+            });
         }
     }
 }

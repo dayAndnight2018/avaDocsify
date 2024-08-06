@@ -5,6 +5,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Avalonia.Threading;
 
 namespace MarkDownAvalonia.Controls
 {
@@ -70,8 +71,14 @@ namespace MarkDownAvalonia.Controls
         /// <param name="e"></param>
         public void NextMatch(object sender, RoutedEventArgs e)
         {
-            var text = mainWindowTextBox.Text;
-            var searchText = input.Text;
+            string text = null;
+            string searchText = null;
+
+            Dispatcher.UIThread.Invoke(() =>
+            {
+                text = mainWindowTextBox.Text;
+                searchText = input.Text;
+            });
 
             // 异常输入
             if (string.IsNullOrWhiteSpace(searchText))
@@ -83,17 +90,21 @@ namespace MarkDownAvalonia.Controls
                 // search text changed 
                 matchOrder = -1;
                 lastIndex = -1;
-                cacheMatchText = input.Text;
+                cacheMatchText = searchText;
             }
 
             int currentMatchIndex = -1;
             if ((currentMatchIndex = text.IndexOf(searchText, lastIndex + 1, StringComparison.Ordinal)) != -1)
             {
-                mainWindowTextBox.SelectionBrush = new SolidColorBrush(Colors.DodgerBlue);
-                mainWindowTextBox.SelectionForegroundBrush = new SolidColorBrush(Colors.White);
-                mainWindowTextBox.SelectionStart = currentMatchIndex;
-                mainWindowTextBox.SelectionEnd = currentMatchIndex + searchText.Length;
-                mainWindowTextBox.CaretIndex = currentMatchIndex;
+                Dispatcher.UIThread.Invoke(() =>
+                {
+                    mainWindowTextBox.Focus();
+                    mainWindowTextBox.CaretIndex = currentMatchIndex;
+                    mainWindowTextBox.SelectionStart = currentMatchIndex;
+                    mainWindowTextBox.SelectionEnd = currentMatchIndex + searchText.Length;
+                    mainWindowTextBox.UpdateLayout();
+                });
+                
                 // update new matched
                 matchOrder++;
                 lastIndex = currentMatchIndex;
@@ -107,8 +118,14 @@ namespace MarkDownAvalonia.Controls
         /// <param name="e"></param>
         public void LastMatch(object sender, RoutedEventArgs e)
         {
-            var text = mainWindowTextBox.Text;
-            var searchText = input.Text;
+            string text = null;
+            string searchText = null;
+
+            Dispatcher.UIThread.Invoke(() =>
+            {
+                text = mainWindowTextBox.Text;
+                searchText = input.Text;
+            });
 
             // error input
             if (string.IsNullOrWhiteSpace(searchText))
@@ -120,7 +137,7 @@ namespace MarkDownAvalonia.Controls
                 // search text changed 
                 matchOrder = -1;
                 lastIndex = text.Length;
-                cacheMatchText = input.Text;
+                cacheMatchText = searchText;
             }
 
             var currentMatchIndex = -1;
@@ -128,11 +145,15 @@ namespace MarkDownAvalonia.Controls
             if ((currentMatchIndex =
                 text.Substring(0, searchEndIndex).LastIndexOf(searchText)) != -1)
             {
-                mainWindowTextBox.SelectionBrush = new SolidColorBrush(Colors.DodgerBlue);
-                mainWindowTextBox.SelectionForegroundBrush = new SolidColorBrush(Colors.White);
-                mainWindowTextBox.SelectionStart = currentMatchIndex;
-                mainWindowTextBox.SelectionEnd = currentMatchIndex + searchText.Length;
-                mainWindowTextBox.CaretIndex = currentMatchIndex;
+                Dispatcher.UIThread.Invoke(() =>
+                {
+                    mainWindowTextBox.Focus();
+                    mainWindowTextBox.CaretIndex = currentMatchIndex;
+                    mainWindowTextBox.SelectionStart = currentMatchIndex;
+                    mainWindowTextBox.SelectionEnd = currentMatchIndex + searchText.Length;
+                    mainWindowTextBox.UpdateLayout();
+                });
+                
                 // update new matched
                 matchOrder++;
                 lastIndex = currentMatchIndex;
@@ -146,17 +167,20 @@ namespace MarkDownAvalonia.Controls
         /// <param name="e"></param>
         public void Replace(object sender, RoutedEventArgs e)
         {
-            var text = mainWindowTextBox.Text;
-            var searchText = input.Text;
-
-            // 异常输入
-            if (string.IsNullOrWhiteSpace(searchText))
-                return;
-
-            if (searchText.Equals(mainWindowTextBox.SelectedText))
+            Dispatcher.UIThread.Invoke(() =>
             {
-                mainWindowTextBox.SelectedText = replace.Text;
-            }
+                var text = mainWindowTextBox.Text;
+                var searchText = input.Text;
+
+                // 异常输入
+                if (string.IsNullOrWhiteSpace(searchText))
+                    return;
+
+                if (searchText.Equals(mainWindowTextBox.SelectedText))
+                {
+                    mainWindowTextBox.SelectedText = replace.Text;
+                }
+            });
         }
 
         /// <summary>
@@ -166,14 +190,17 @@ namespace MarkDownAvalonia.Controls
         /// <param name="e"></param>
         public void ReplaceAll(object sender, RoutedEventArgs e)
         {
-            var text = mainWindowTextBox.Text;
-            var searchText = input.Text;
+            Dispatcher.UIThread.Invoke(() =>
+            {
+                var text = mainWindowTextBox.Text;
+                var searchText = input.Text;
 
-            // 异常输入
-            if (string.IsNullOrWhiteSpace(searchText))
-                return;
+                // 异常输入
+                if (string.IsNullOrWhiteSpace(searchText))
+                    return;
 
-            mainWindowTextBox.Text = mainWindowTextBox.Text.Replace(searchText, replace.Text);
+                mainWindowTextBox.Text = mainWindowTextBox.Text.Replace(searchText, replace.Text);
+            });
         }
         
         private void WindowBorder_OnPointerPressed(object? sender, PointerPressedEventArgs e)

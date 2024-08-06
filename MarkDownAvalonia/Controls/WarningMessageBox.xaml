@@ -20,6 +20,11 @@
                         <Setter Property="Margin" Value="10 0 10 0" />
                         <Setter Property="BorderThickness" Value="0" />
                 </Style>
+                
+                <Style Selector="Button.warningConfirm:pointerover /template/ ContentPresenter">
+                        <Setter Property="Foreground" Value="white" />
+                        <Setter Property="Background" Value="#FF9800" />
+                </Style>
         </Window.Styles>
         <Grid>
                 <Grid.RowDefinitions>
@@ -36,11 +41,11 @@
                                 <PathIcon FontWeight="UltraBold" Foreground="#FF9800" Data="M468.114286 621.714286c7.314286 21.942857 21.942857 36.571429 43.885714 36.571428s36.571429-14.628571 43.885714-36.571428L585.142857 219.428571c0-43.885714-36.571429-73.142857-73.142857-73.142857-43.885714 0-73.142857 36.571429-73.142857 80.457143l29.257143 394.971429zM512 731.428571c-43.885714 0-73.142857 29.257143-73.142857 73.142858s29.257143 73.142857 73.142857 73.142857 73.142857-29.257143 73.142857-73.142857-29.257143-73.142857-73.142857-73.142858z" HorizontalAlignment="Center"></PathIcon>
                         </Border>
                 </Grid>
-                <Label Grid.Row="3" HorizontalAlignment="Center" FontSize="15" Name="message" Foreground="white" Content="这是警告的内容" />
+                <Label Grid.Row="3" HorizontalAlignment="Center" FontSize="15" Name="message" Foreground="White" Content="this is warning text"/>
                 <Grid Grid.Row="5">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 10 5">
-                                <Button  Classes="warningConfirm"  Content="Cancel" Click="CloseWindow" />
-                                <Button  Classes="warningConfirm"  Content="OK" Click="Confirm" />
+                                <Button  Classes="warningConfirm"  Content="Cancel" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="CloseWindow" />
+                                <Button  Classes="warningConfirm"  Content="OK" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Confirm" />
                         </StackPanel>
                 </Grid>
         </Grid>

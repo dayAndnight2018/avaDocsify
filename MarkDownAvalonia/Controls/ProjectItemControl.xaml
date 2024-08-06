@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="120"
+             x:Class="MarkDownAvalonia.Controls.ProjectItemControl"
+             Background="#312F2F" BorderThickness="0 1 0 0" BorderBrush="#473A3B" 
+             PointerEntered="GetFocus" PointerExited="LostFocus" Foreground="silver" Padding="5">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="itemTitleTbk" 
+                   FontSize="16" Padding="5 8" 
+                   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                   VerticalAlignment="Top" HorizontalAlignment="Left" TextAlignment="Start"
+                   TextTrimming="CharacterEllipsis" 
+                   Text="这是测试标题,再长一点也是可以的这是测试标题,再长一点也是可以的">
+            
+        </TextBlock>
+        <TextBlock Name="itemTimeTbk" 
+                   Grid.Row="2" Grid.Column="0" 
+                   VerticalAlignment="Bottom" HorizontalAlignment="Left" TextAlignment="Left"
+                   Padding="5 8" 
+                   TextTrimming="CharacterEllipsis" Text="2020/12/01 11:11:00">
+            
+        </TextBlock>
+        <Button Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" 
+                Background="TransParent" Foreground="White" HorizontalContentAlignment="Right" HorizontalAlignment="Right"
+                FontSize="12" Click="Button_OnClick">×</Button>
+    </Grid>
+</UserControl>

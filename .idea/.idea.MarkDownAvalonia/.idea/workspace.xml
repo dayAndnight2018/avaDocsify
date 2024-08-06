@@ -14,66 +14,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14c2ef56-7a95-4143-8bf6-009a37c1fb77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.vs/MarkDownAvalonia/xs/UserPrefs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vs/MarkDownAvalonia/xs/project-cache/MarkDownAvalonia-Debug.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Assets/Fonts/WenQuanYiMicroHei.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Assets/issue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Constants/StringConstant.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/AutoSaveHolder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/AutoSaver.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/PostItemFilterControl.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/PostItemFilterControl.xaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/PushWindow.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/PushWindow.xaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/RenamePanel.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/RenamePanel.xaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/css/vue.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/js/copy-code.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/js/count.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/js/docsify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/js/prism-java.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/js/search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/js/zoom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MarkDownAvalonia/.idea/contentModel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MarkDownAvalonia/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MarkDownAvalonia/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MarkDownAvalonia/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/InsertTable.xaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/InsertTable.xaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/ProjectItemControl.xaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/ProjectItemControl.xaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/ProjectWindow.xaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/ProjectWindow.xaml.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Data/TableProperties.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/Extends/ImageExportHelper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/preview.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/css/bulma.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/css/fontAwsome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/css/foundation-icons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/css/foundation-icons.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/css/kai.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/css/kai.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MarkDownAvalonia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MarkDownAvalonia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia.sln" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/EntryApp.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/App.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/EntryApp.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Assets/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/EditorWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/EditorWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/AutoSaveHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/AutoSaveHolder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/AutoSaver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/AutoSaver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/ErrorMessageBox.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/ErrorMessageBox.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/ErrorMessageBox.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/ErrorMessageBox.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/FindWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/FindWindow.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/FindWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/FindWindow.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/InfoMessageBox.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/InfoMessageBox.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/PostItemControl.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/PostItemControl.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/InfoMessageBox.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/InfoMessageBox.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/PostItemControl.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/PostItemControl.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/SettingWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/SettingWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/PushWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/PushWindow.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/SuccessMessageBox.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/SuccessMessageBox.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/SuccessMessageBox.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/SuccessMessageBox.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/WarningMessageBox.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/WarningMessageBox.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Controls/WarningMessageBox.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/WarningMessageBox.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Data/CommonData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Data/CommonData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Data/ConfigManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Data/ConfigManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Data/GitUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Data/GitUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Data/MessageBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Data/MessageBox.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Data/ViewModels/MainWindowDataContextViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Data/ViewModels/MainWindowDataContextViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Enums/TagCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Enums/TagCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/EntryApp.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/EntryApp.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/MarkDownAvalonia.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/MarkDownAvalonia.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/MarkDownAvalonia.sln" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/MarkDownAvalonia.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/infoflow 2020-12-06 14-38-49.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/infoflow 2020-12-06 15-55-53.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/infoflow 2020-12-06 15-56-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/infoflow 2020-12-06 15-56-50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/infoflow 2020-12-06 15-57-27.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/infoflow 2020-12-23 22-55-54.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/infoflow 2020-12-23 22-57-07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/template/css/vue.css" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/css/vue.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/template/js/zoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/template/js/zoom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MarkDownAvalonia/theme.json" beforeDir="false" afterPath="$PROJECT_DIR$/MarkDownAvalonia/theme.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,71 +79,20 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1E61864D-D152-41BE-9CE0-AE8C95C9F5F0/0b/85c06142/IKeyboardDevice.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/55396833-13B7-435F-A476-C057C64F15B9/c3/0f8ada70/RoutedEventArgs.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/085D2287-06C6-4534-AEC7-86CA072D273C/d3/995eda52/RuntimeHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D6C927D-DB0D-4938-9901-F79497780776/ed/21e6460e/Control.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/085D2287-06C6-4534-AEC7-86CA072D273C/b3/f2689a7a/String.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D6C927D-DB0D-4938-9901-F79497780776/48/906f0047/WindowIcon.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/085D2287-06C6-4534-AEC7-86CA072D273C/cc/c7353258/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/86A76CD2-DDEE-4BBC-93D0-2B0C90F889C1/0f/43921cf3/Interactive.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D6C927D-DB0D-4938-9901-F79497780776/80/5d23bb53/Application.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B0260E5F-CA94-493D-8E8C-7D2E54230027/03/baa08e88/JobRunner.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CDF4215F-97F4-4B70-8F9F-5AAE8AC40141/1a/10ebeb74/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EB4E8D9F-E54E-4B4D-A8B6-4B339227B16A/09/cc7199b0/HostingAbstractionsHostExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4403C1D9-C085-450A-97BA-0AF21D8BB0B8/cc/3969b9e6/SKBitmap.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MarkDownAvalonia/theme.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D6C927D-DB0D-4938-9901-F79497780776/01/848fa71b/IClassicDesktopStyleApplicationLifetime.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7BA248F1-E4C6-406F-8A2D-AA5E01BB107F/a8/35ee104f/IClassicDesktopStyleApplicationLifetime.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/085D2287-06C6-4534-AEC7-86CA072D273C/9d/6ab74629/Environment.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7BA248F1-E4C6-406F-8A2D-AA5E01BB107F/b1/202585f1/Application.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1E61864D-D152-41BE-9CE0-AE8C95C9F5F0/4f/4d3e7ee3/InputElement.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/88F9A74B-9259-4A43-A9F1-2B70337E974B/5f/e562942e/Directory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/085D2287-06C6-4534-AEC7-86CA072D273C/96/5b3ebdf0/FileStream.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C3A4F9F5-6DFA-4F99-8819-CBE7DE968E7A/15/7f4629a3/StreamWriter.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/88F9A74B-9259-4A43-A9F1-2B70337E974B/08/d64e2f34/File.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E7E5FBEB-8FF9-4361-AC40-6E2BE797EAC7/bf/951ca5b3/FileInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B0260E5F-CA94-493D-8E8C-7D2E54230027/47/a5af7851/AvaloniaObject.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1B7DF100-2A83-47C5-99C2-3DE9F74375AF/05/89fca7d7/AvaloniaXamlLoader.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/085D2287-06C6-4534-AEC7-86CA072D273C/fd/8f45a7a7/StringComparison.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/085D2287-06C6-4534-AEC7-86CA072D273C/74/300f3e20/Task`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3F36CCDF-34F4-4F58-80BF-AF66AF039C6C/c9/e8968684/Markdown.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/085D2287-06C6-4534-AEC7-86CA072D273C/40/6d4b52f8/TimerQueue.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/055C5321-64FC-4B09-98F1-79544EAD4761/b8/057b0590/ConcurrentDictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AD4D725E-AD55-4BC7-8300-F1E2AE783C58/26/fb19fda2/CGeometry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/55696FF7-E2A3-4235-AAE2-D6BC4B4B816B/2f/8273cc59/Point.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/88F9A74B-9259-4A43-A9F1-2B70337E974B/71/e8da37f8/FileInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AD4D725E-AD55-4BC7-8300-F1E2AE783C58/7e/8a6f1c2c/CInline.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/55696FF7-E2A3-4235-AAE2-D6BC4B4B816B/bd/ab00bbb4/PixelPoint.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/B82B5E66-F004-4F9E-ADD9-EF3F6EB35563/99/2afc2eea/Timer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/085D2287-06C6-4534-AEC7-86CA072D273C/7e/25fa6657/TimerQueueTimer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AD4D725E-AD55-4BC7-8300-F1E2AE783C58/40/c26a9ea3/CTextBlock.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/89172DA1-695B-448D-BBCB-1CBDE9DB7FFE/33/17b8349e/HighlightedLine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/3F36CCDF-34F4-4F58-80BF-AF66AF039C6C/17/be6abe95/02000006.il" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/55696FF7-E2A3-4235-AAE2-D6BC4B4B816B/12/45eadc73/UnicodeRange.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DEB5EFD9-F540-47AC-9423-5E1F570746EE/d6/d166a132/Timer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D6C927D-DB0D-4938-9901-F79497780776/54/613d93ac/TextBlock.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3F36CCDF-34F4-4F58-80BF-AF66AF039C6C/58/5fde4388/MarkdownScrollViewer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/89172DA1-695B-448D-BBCB-1CBDE9DB7FFE/18/7c1dc049/ISegment.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/55696FF7-E2A3-4235-AAE2-D6BC4B4B816B/a1/7b710b46/FontManagerOptions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D6C927D-DB0D-4938-9901-F79497780776/d8/3638bfce/TemplatedControl.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/55396833-13B7-435F-A476-C057C64F15B9/36/39747019/Interactive.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/55396833-13B7-435F-A476-C057C64F15B9/e2/949a3c8a/RoutingStrategies.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3F36CCDF-34F4-4F58-80BF-AF66AF039C6C/7b/f2abf9dd/EmojiTable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/55696FF7-E2A3-4235-AAE2-D6BC4B4B816B/40/a409420e/FontFallback.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D6C927D-DB0D-4938-9901-F79497780776/df/5cec6174/NativeMenu.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/085D2287-06C6-4534-AEC7-86CA072D273C/af/335e75e1/Timer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D6C927D-DB0D-4938-9901-F79497780776/cb/2af4d488/TextBox.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/88F9A74B-9259-4A43-A9F1-2B70337E974B/dc/24343e42/FileSystemInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D6C927D-DB0D-4938-9901-F79497780776/54/b78203a0/Menu.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D6C927D-DB0D-4938-9901-F79497780776/8a/fe36452d/Window.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D6C927D-DB0D-4938-9901-F79497780776/f6/4baddec8/TrayIcon.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C3A4F9F5-6DFA-4F99-8819-CBE7DE968E7A/88/4079c0a0/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7BA248F1-E4C6-406F-8A2D-AA5E01BB107F/5d/3247b912/TextBox.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/085D2287-06C6-4534-AEC7-86CA072D273C/79/d8e7cb65/Object.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1E61864D-D152-41BE-9CE0-AE8C95C9F5F0/4c/293a7d85/PointerPressedEventArgs.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1E61864D-D152-41BE-9CE0-AE8C95C9F5F0/aa/ac20aa0e/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MarkDownAvalonia/Styles/CustomStyles.xaml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1E61864D-D152-41BE-9CE0-AE8C95C9F5F0/82/6e152a87/KeyboardDevice.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1E61864D-D152-41BE-9CE0-AE8C95C9F5F0/fb/173c3b77/PointerEventArgs.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1E61864D-D152-41BE-9CE0-AE8C95C9F5F0/74/6c8802d5/IInputElement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7BA248F1-E4C6-406F-8A2D-AA5E01BB107F/e5/0a0d55ab/Window.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7BA248F1-E4C6-406F-8A2D-AA5E01BB107F/da/fb4d3408/Control.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/853CC738-68EA-410B-85F7-2CF66ED2A59B/f6/858b2d5c/MarkdownScrollViewer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EFA4AAC1-E756-47FA-93CD-1C50953ABB35/df/1a7f1a35/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BB69D214-9731-4E18-A1B2-3BFA365570CA/04/36e80104/HostingHostBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4403C1D9-C085-450A-97BA-0AF21D8BB0B8/28/4857ee4c/SkiaApi.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EFA4AAC1-E756-47FA-93CD-1C50953ABB35/eb/702aedd3/Task.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EB4E8D9F-E54E-4B4D-A8B6-4B339227B16A/7a/ec9ed43d/IHost.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4403C1D9-C085-450A-97BA-0AF21D8BB0B8/98/21c4ce98/SKPixmap.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -172,35 +100,51 @@
       <option value="$PROJECT_DIR$/MarkDownAvalonia/App.xaml.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/FindWindow.xaml" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/EditorWindow.xaml.cs" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/ErrorMessageBox.xaml.cs" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/FindWindow.xaml.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/InfoMessageBox.xaml.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/RenamePanel.xaml" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/SettingWindow.xaml.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/RenamePanel.xaml.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/PostItemFilterControl.xaml.cs" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/Data/ConfigManager.cs" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/SuccessMessageBox.xaml" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/SuccessMessageBox.xaml.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/template.html" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/PushWindow.xaml.cs" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/PushWindow.xaml" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Enums/TagCollection.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/publish.xml" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/AutoSaveHolder.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/AutoSaver.cs" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/AutoSaveHolder.cs" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/PostItemControl.xaml.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Program.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/MarkDownAvalonia.csproj" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/EntryApp.xaml.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/WarningMessageBox.xaml.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/EntryApp.xaml" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/Data/GitUtils.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/PostItemControl.xaml" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/PostItemFilterControl.xaml" />
-      <option value="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/AutoSaver.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/AutoSaveHolder.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/PostItemControl.xaml.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/SuccessMessageBox.xaml" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/ErrorMessageBox.xaml" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/InfoMessageBox.xaml" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/ErrorMessageBox.xaml.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/SuccessMessageBox.xaml.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/WarningMessageBox.xaml" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/PushWindow.xaml" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/FindWindow.xaml.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Data/TableProperties.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/SettingWindow.xaml.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/InsertTable.xaml.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/InsertTable.xaml" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Data/CommonData.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/ProjectItemControl.xaml.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/ProjectItemControl.xaml" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/ProjectWindow.xaml.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/ProjectWindow.xaml" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/theme.json" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Extends/ImageExportHelper.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/preview.html" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Data/ConfigManager.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Data/GitUtils.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/IndexController.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/EntryApp.xaml.cs" />
+      <option value="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/ServerHolder.cs" />
       <option value="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml" />
     </changedPaths>
   </component>
@@ -214,12 +158,13 @@
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.17264082" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="XThreadsFramesViewSplitterKey" value="0.9276596" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Xaml" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.MarkDownAvalonia">
@@ -437,7 +382,39 @@
       <workItem from="1694758455968" duration="44196000" />
       <workItem from="1695010177864" duration="4362000" />
       <workItem from="1695014764939" duration="2381000" />
-      <workItem from="1695033369131" duration="12669000" />
+      <workItem from="1695033369131" duration="13323000" />
+      <workItem from="1695113382127" duration="3402000" />
+      <workItem from="1695123569811" duration="62000" />
+      <workItem from="1695208253189" duration="402000" />
+      <workItem from="1695211697676" duration="1749000" />
+      <workItem from="1695291304508" duration="5137000" />
+      <workItem from="1695358036946" duration="330000" />
+      <workItem from="1695771397864" duration="5000" />
+      <workItem from="1695771436168" duration="3528000" />
+      <workItem from="1696061220915" duration="1430000" />
+      <workItem from="1697153841226" duration="763000" />
+      <workItem from="1697628254106" duration="5298000" />
+      <workItem from="1697972418934" duration="2226000" />
+      <workItem from="1698153636044" duration="6606000" />
+      <workItem from="1698419743786" duration="1788000" />
+      <workItem from="1698761894737" duration="174000" />
+      <workItem from="1698762200845" duration="228000" />
+      <workItem from="1698762468817" duration="12000" />
+      <workItem from="1698762510569" duration="92000" />
+      <workItem from="1698811907715" duration="1050000" />
+      <workItem from="1699084092297" duration="135000" />
+      <workItem from="1702564193840" duration="300000" />
+      <workItem from="1702607418276" duration="698000" />
+      <workItem from="1707801638080" duration="73000" />
+      <workItem from="1707801729287" duration="6268000" />
+      <workItem from="1711161655873" duration="1693000" />
+      <workItem from="1712649866923" duration="2138000" />
+      <workItem from="1713084014009" duration="3242000" />
+      <workItem from="1713277131602" duration="5795000" />
+      <workItem from="1713306490921" duration="1085000" />
+      <workItem from="1716736774011" duration="311000" />
+      <workItem from="1717650059894" duration="1419000" />
+      <workItem from="1718421839155" duration="117000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1609588163173</created>
@@ -665,19 +642,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/MarkDownAvalonia/Controls/FindWindow.xaml.cs</url>
-          <line>72</line>
-          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/FindWindow.xaml.cs" initialLine="53">
-            <startOffsets>
-              <option value="2147" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2178" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/MarkDownAvalonia/Controls/SettingWindow.xaml.cs</url>
           <line>60</line>
           <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/SettingWindow.xaml.cs" initialLine="60">
@@ -704,32 +668,166 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/MarkDownAvalonia/Controls/FindWindow.xaml.cs</url>
-          <line>93</line>
-          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/FindWindow.xaml.cs" initialLine="91" containingFunctionPresentation="method 'NextMatch'">
-            <startOffsets>
-              <option value="2942" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2995" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/AutoSaver.cs</url>
-          <line>103</line>
+          <line>106</line>
           <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/Controls/Command/AutoSaver.cs" initialLine="103" containingFunctionPresentation="method 'forceSave'">
             <startOffsets>
-              <option value="2886" />
+              <option value="2976" />
             </startOffsets>
             <endOffsets>
-              <option value="2950" />
+              <option value="3040" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs</url>
+          <line>748</line>
+          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" initialLine="695" containingFunctionPresentation="method 'RemoveDuplicateImage'">
+            <startOffsets>
+              <option value="25557" />
+            </startOffsets>
+            <endOffsets>
+              <option value="25630" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs</url>
+          <line>764</line>
+          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" initialLine="711" containingFunctionPresentation="method 'RemoveDuplicateImage'">
+            <startOffsets>
+              <option value="26289" />
+            </startOffsets>
+            <endOffsets>
+              <option value="26650" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs</url>
+          <line>770</line>
+          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" initialLine="717" containingFunctionPresentation="method 'RemoveDuplicateImage'">
+            <startOffsets>
+              <option value="26664" />
+            </startOffsets>
+            <endOffsets>
+              <option value="26684" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs</url>
+          <line>256</line>
+          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" initialLine="243" containingFunctionPresentation="method 'SavePost'">
+            <startOffsets>
+              <option value="8750" />
+            </startOffsets>
+            <endOffsets>
+              <option value="8803" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs</url>
+          <line>572</line>
+          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" initialLine="541" containingFunctionPresentation="method 'InputShortcutKeys'">
+            <startOffsets>
+              <option value="19092" />
+            </startOffsets>
+            <endOffsets>
+              <option value="19144" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs</url>
+          <line>578</line>
+          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" initialLine="546" containingFunctionPresentation="method 'InputShortcutKeys'">
+            <startOffsets>
+              <option value="19429" />
+            </startOffsets>
+            <endOffsets>
+              <option value="19495" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs</url>
+          <line>587</line>
+          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" initialLine="555" containingFunctionPresentation="method 'InputShortcutKeys'">
+            <startOffsets>
+              <option value="20113" />
+            </startOffsets>
+            <endOffsets>
+              <option value="20154" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs</url>
+          <line>926</line>
+          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" initialLine="895" containingFunctionPresentation="method 'InsertTable'">
+            <startOffsets>
+              <option value="-1" />
+            </startOffsets>
+            <endOffsets>
+              <option value="-1" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/MarkDownAvalonia/Extends/ImageExportHelper.cs</url>
+          <line>64</line>
+          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/Extends/ImageExportHelper.cs" initialLine="64" containingFunctionPresentation="method 'ExportControlImageBasic'">
+            <startOffsets>
+              <option value="3074" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3110" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs</url>
+          <line>500</line>
+          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" initialLine="500" containingFunctionPresentation="method 'ExitButtonClicked'">
+            <startOffsets>
+              <option value="16841" />
+            </startOffsets>
+            <endOffsets>
+              <option value="16870" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs</url>
+          <line>502</line>
+          <properties documentPath="$PROJECT_DIR$/MarkDownAvalonia/MainWindow.xaml.cs" initialLine="502" containingFunctionPresentation="method 'ExitButtonClicked'">
+            <startOffsets>
+              <option value="16901" />
+            </startOffsets>
+            <endOffsets>
+              <option value="16925" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

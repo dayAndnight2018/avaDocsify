@@ -22,8 +22,8 @@
         <Style Selector="Button.tab /template/ ContentPresenter">
             <Setter Property="CornerRadius" Value="10" />
         </Style>
-
-        <Style Selector="Button.tab:pointerover">
+    
+        <Style Selector="Button.tab:pointerover /template/ ContentPresenter">
             <Setter Property="Background" Value="#C75049" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
@@ -80,7 +80,7 @@
                          FontFamily="Microsoft YaHei,Simsun,苹方,苹方-简,宋体-简"
                          ScrollViewer.VerticalScrollBarVisibility="Hidden" />
 
-                <Button Grid.Column="4" Grid.Row="5" Classes="tab" Content="Commit" Click="Commit" />
+                <Button Grid.Column="4" Grid.Row="5" Classes="tab" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Commit" Click="Commit" />
 
             </Grid>
         </Grid>

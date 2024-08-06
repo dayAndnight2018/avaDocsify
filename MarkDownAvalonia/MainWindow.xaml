@@ -97,6 +97,23 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         </Style>
+        
+        <Style Selector="ContextMenu">
+            <Setter Property="Background" Value="#312f2f"></Setter>
+        </Style>
+        
+        <Style Selector="ContextMenu > MenuItem">
+            <Setter Property="Foreground" Value="#FFFFFF"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        </Style>
+        
+        <Style Selector="MenuItem:pointerover /template/ Border">
+            <Setter Property="Background" Value="#FFFFFF"></Setter>
+        </Style>
+        
+        <Style Selector="MenuItem:pointerover /template/ ContentPresenter">
+            <Setter Property="Foreground" Value="#312f2f"></Setter>
+        </Style>
 
         <Style Selector="ctxt|CImage.large">
             <Setter Property="LayoutWidth" Value="640"/>
@@ -204,14 +221,23 @@
                             </Button>
                             <!-- <Label Classes="tip">Find</Label> -->
                         </StackPanel>
-                            
+                        
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Button Classes="tab" Click="InsertTable">
+                                <StackPanel Orientation="Horizontal">
+                                    <PathIcon
+                                        Data="M1194.666667 114.631111H483.555556v758.518519h758.518518V114.725926h-47.407407zM720.592593 825.837037H530.962963V683.614815h189.62963v142.222222z m0-189.724444H530.962963V493.985185h189.62963v142.127408zM957.62963 825.837037H768V683.614815h189.62963v142.222222z m0-189.724444H768V493.985185h189.62963v142.127408zM1194.666667 825.837037h-189.62963V683.614815h189.62963v142.222222z m0-189.724444h-189.62963V493.985185h189.62963v142.127408z m0-189.62963h-189.62963V304.355556h-47.407407v142.222222H768V304.355556h-47.407407v142.222222H530.962963V304.355556h663.703704v142.127407z" />
+                                </StackPanel>
+                            </Button>
+                            <!-- <Label Classes="tip">Find</Label> -->
+                        </StackPanel>
 
-                        <!--<Button Classes="tab" ToolTip.Tip="publish" Click="PublishPost">
+                        <Button Classes="tab" ToolTip.Tip="Preview" Click="ExportImage">
                             <StackPanel Orientation="Horizontal">
                                 <PathIcon
-                                    Data="M1008.57728 218.21568l0.13952-1.12-0.17024-0.84736 0.06656-0.53504 0.0704-0.55936 0.03456-0.28032-0.21504-0.28544 0.0384-0.30464 0.0704-0.56064-0.47616-0.6016 0.06912-0.55936 0.06656-0.53504-0.20096-0.59392-0.24704-0.03072 0.13696-1.0944-0.4736-0.6272 0.0704-0.55936 0.03456-0.28032 0.03456-0.28032-0.47616-0.6016-0.512-0.34816 0.03584-0.27904-0.92416-1.22624 0.06912-0.56064-0.47232-0.6272-0.45184-0.59904-0.4736-0.6272 0.06784-0.53504-0.44928-0.62464-0.29568-0.03584-0.27136-0.03456-0.18048-0.56448-0.1984-0.61952-0.27136-0.03328-0.23552-0.31488 0.03072-0.256-0.512-0.06528 0.03456-0.27904-0.54272-0.06784 0.03456-0.28032 0.03456-0.28032-0.512-0.064-0.50048-0.60544-0.512-0.064 0.03456-0.28032-0.54272-0.06784-0.99072-0.69248-0.2048-0.56832-0.27136-0.03328-0.512-0.064-0.27136-0.03456-0.1984-0.61952-0.24704-0.03072-0.29568-0.03584-0.54272-0.06784-0.45184-0.59904-0.54272-0.06784 0.0704-0.56064-0.512-0.064-0.54272-0.06784-0.512-0.064-0.87296-0.10496-0.1792-0.56576-0.27136-0.03328-0.27136-0.03328-0.27136-0.03456-0.24704-0.03072-0.27136-0.03328-0.54272-0.06784-0.24704-0.03072-0.54272-0.06784-1.62816-0.20352-0.512-0.064-0.54272-0.06784-0.512-0.064-0.27136-0.03456-0.78976-0.09856-0.29568-0.03584-0.85632 0.4352-0.27136-0.03328-0.27136-0.03456-0.512-0.064-0.06912 0.55936-0.54272-0.06784-0.512-0.064-0.60928 0.46592-0.56704-0.0704-0.512-0.064L32.83328 437.59104a24.11136 24.11136 0 0 0-17.12768 28.672 23.552 23.552 0 0 0 12.22912 15.24736l257.60128 145.79456 7.6672 164.77312a22.87488 22.87488 0 0 0 23.808 22.2464 21.78688 21.78688 0 0 0 13.81376-6.10816l113.43104-91.1168 194.688 110.5088a22.64576 22.64576 0 0 0 30.92992-8.7552L1005.01248 229.5296l0.61184-0.49152 0.03584-0.28032 0.03072-0.256 0.24704 0.03072 0.0704-0.55936 0.27136 0.03328 0.03456-0.28032 0.06656-0.53376 0.03456-0.28032 0.30592-0.24576 0.30976-0.27136 0.06656-0.53504 0.31744-0.52864 0.06656-0.53376 0.06912-0.56064 0.06656-0.53376 0.0704-0.56064 0.37504-0.80512 0.34176-0.52608 0.44416-3.56352-0.27136-0.03328z m-700.544 367.90912L100.04864 468.94464l730.19648-187.5776L308.03328 586.1248z m28.31872 158.12096l-3.712-90.08384 68.4672 38.79808-64.768 51.28576z m305.8048 31.40608L354.10944 612.6208l569.64864-332.18048-281.6 495.21152z" />
+                                    Data="M614.4 1024H128c-70.656 0-128-57.344-128-128V128C0 57.344 57.344 0 128 0h614.4c70.656 0 128 57.344 128 128v230.4c0 14.336-11.264 25.6-25.6 25.6s-25.6-11.264-25.6-25.6V128c0-42.496-34.304-76.8-76.8-76.8H128c-42.496 0-76.8 34.304-76.8 76.8v768c0 42.496 34.304 76.8 76.8 76.8h486.4c14.336 0 25.6 11.264 25.6 25.6s-11.264 25.6-25.6 25.6z M691.2 256H179.2c-14.336 0-25.6-11.264-25.6-25.6s11.264-25.6 25.6-25.6h512c14.336 0 25.6 11.264 25.6 25.6s-11.264 25.6-25.6 25.6zM384 443.904H179.2c-14.336 0-25.6-11.264-25.6-25.6s11.264-25.6 25.6-25.6h204.8c14.336 0 25.6 11.264 25.6 25.6s-11.264 25.6-25.6 25.6zM281.6 631.296H179.2c-14.336 0-25.6-11.264-25.6-25.6s11.264-25.6 25.6-25.6h102.4c14.336 0 25.6 11.264 25.6 25.6s-11.264 25.6-25.6 25.6zM332.8 819.2H179.2c-14.336 0-25.6-11.264-25.6-25.6s11.264-25.6 25.6-25.6h153.6c14.336 0 25.6 11.264 25.6 25.6s-11.264 25.6-25.6 25.6zM640 896c-141.312 0-256-114.688-256-256s114.688-256 256-256 256 114.688 256 256-114.688 256-256 256z m0-460.8c-113.152 0-204.8 91.648-204.8 204.8s91.648 204.8 204.8 204.8 204.8-91.648 204.8-204.8-91.648-204.8-204.8-204.8z M998.4 1024c-6.656 0-13.312-2.56-17.92-7.68l-189.44-189.44c-10.24-10.24-10.24-26.112 0-36.352s26.112-10.24 36.352 0l189.44 189.44c10.24 10.24 10.24 26.112 0 36.352-5.12 5.12-11.776 7.68-18.432 7.68z" />
                             </StackPanel>
-                        </Button>-->
+                        </Button>
 
                         <!--<Button Classes="tab" ToolTip.Tip="restore" Click="RestorePost">
                             <StackPanel Orientation="Horizontal">
@@ -350,6 +376,8 @@
                     <StackPanel Orientation="Vertical" Name="postItemsPanel" />
                 </ScrollViewer>
             </Grid>
+            
+            <!-- <TextBox  ></TextBox> -->
 
             <!-- Background="#2A3030"-->
             <Grid Grid.Row="1" Grid.Column="1" Background="{Binding Path=PreviewPanelBackground}">
@@ -381,12 +409,14 @@
                             <MenuItem Header= "二级标题" Click="H2_OnClick" />
                             <MenuItem Header= "三级标题" Click="H3_OnClick" />
                             <MenuItem Header= "四级标题" Click="H4_OnClick" />
-                            <MenuItem Header= "五级标题" Click="H5_OnClick" />
-                            <MenuItem Header= "六级标题" Click="H6_OnClick" />
+                            <!-- <MenuItem Header= "五级标题" Click="H5_OnClick" /> -->
+                            <!-- <MenuItem Header= "六级标题" Click="H6_OnClick" /> -->
+                            <MenuItem Header= "代码块" Click="Code_Block_OnClick" />
                             <MenuItem Header="名词/定义" Click="BOLD_OnClick"/>
                             <MenuItem Header="块引用" Click="QUOTO_OnClick"/>
                             <MenuItem Header="块列表" Click="LIST_OnClick"/>
                             <MenuItem Header="标记重点" Click="KEY_OnClick"/>
+                            
                             <MenuItem Header="删除" Click="Delete_OnClick"/>
                             <MenuItem Header="复制" Click="Copy_OnClick"/>
                             <MenuItem Header="剪切" Click="Cut_OnClick"/>
@@ -401,7 +431,7 @@
                     <avalonia:MarkdownScrollViewer.Styles>
                         <Style Selector="TextBlock">
                             <Setter Property="FontFamily" Value="楷体-简,娃娃体-简,苹方,苹方-简,Microsoft YaHei,Simsun,宋体-简" />
-                            <Setter Property="FontSize" Value="18" />
+                            <Setter Property="FontSize" Value="16" />
                         </Style>
                     
                         <Style Selector="ctxt|CBold">
@@ -412,7 +442,7 @@
                         <Style Selector="ctxt|CTextBlock">
                             <Setter Property="FontFamily" Value="楷体-简,娃娃体-简,苹方,苹方-简,Microsoft YaHei,Simsun,宋体-简" />
                             <!-- <Setter Property="Foreground" Value="{Binding Path=markdownForeground}" /> -->
-                            <Setter Property="FontSize" Value="18" />
+                            <Setter Property="FontSize" Value="16" />
                             <Setter Property="Margin" Value="20 5 0 5" />
                         </Style>
                     
@@ -423,37 +453,57 @@
                         <!-- h1 -->
                         <Style Selector="ctxt|CTextBlock.Heading1">
                             <Setter Property="Foreground" Value="{Binding Path=MarkdownH1Foreground}" />
-                            <Setter Property="FontSize" Value="28" />
+                            <Setter Property="FontSize" Value="36" />
                             <Setter Property="FontWeight" Value="Bold" />
                             <Setter Property="Background" Value="{Binding Path=MarkdownH1Background}" />
                             <Setter Property="Margin" Value="10 60 5 30" />
+                            <Setter Property="Effect">
+                                <DropShadowEffect Color="Silver" BlurRadius="4" OffsetX="5" OffsetY="5">
+                                    
+                                </DropShadowEffect>
+                            </Setter>
                         </Style>
                     
                         <!-- h2 -->
                         <Style Selector="ctxt|CTextBlock.Heading2">
                             <Setter Property="Foreground" Value="{Binding Path=MarkdownH2Foreground}" />
-                            <Setter Property="FontSize" Value="26" />
+                            <Setter Property="FontSize" Value="32" />
                             <Setter Property="FontWeight" Value="Bold" />
                             <Setter Property="Background" Value="{Binding Path=MarkdownH2Background}" />
                             <Setter Property="Margin" Value="10 40 5 20" />
+                            <Setter Property="Effect">
+                                <DropShadowEffect Color="Silver" BlurRadius="4" OffsetX="5" OffsetY="5">
+                                    
+                                </DropShadowEffect>
+                            </Setter>
                         </Style>
                     
                         <!-- h3 -->
                         <Style Selector="ctxt|CTextBlock.Heading3">
                             <Setter Property="Foreground" Value="{Binding Path=MarkdownH3Foreground}" />
-                            <Setter Property="FontSize" Value="24" />
+                            <Setter Property="FontSize" Value="28" />
                             <Setter Property="FontWeight" Value="Bold" />
                             <Setter Property="Background" Value="{Binding Path=MarkdownH3Background}" />
                             <Setter Property="Margin" Value="10 20 5 10" />
+                            <Setter Property="Effect">
+                                <DropShadowEffect Color="Silver" BlurRadius="4" OffsetX="5" OffsetY="5">
+                                    
+                                </DropShadowEffect>
+                            </Setter>
                         </Style>
                     
                         <!-- h4 -->
                         <Style Selector="ctxt|CTextBlock.Heading4">
                             <Setter Property="Foreground" Value="{Binding Path=MarkdownH4Foreground}" />
-                            <Setter Property="FontSize" Value="22" />
+                            <Setter Property="FontSize" Value="24" />
                             <Setter Property="FontWeight" Value="Bold" />
                             <Setter Property="Background" Value="{Binding Path=MarkdownH4Background}" />
                             <Setter Property="Margin" Value="10 10 5 5" />
+                            <Setter Property="Effect">
+                                <DropShadowEffect Color="Silver" BlurRadius="4" OffsetX="5" OffsetY="5">
+                                    
+                                </DropShadowEffect>
+                            </Setter>
                         </Style>
                     
                         <!-- h5 -->
@@ -468,7 +518,7 @@
                         <!-- h6 -->
                         <Style Selector="ctxt|CTextBlock.Heading6">
                             <Setter Property="Foreground" Value="{Binding Path=MarkdownH6Foreground}" />
-                            <Setter Property="FontSize" Value="18" />
+                            <Setter Property="FontSize" Value="14" />
                             <Setter Property="FontWeight" Value="Bold" />
                             <Setter Property="Background" Value="{Binding Path=MarkdownH6Background}" />
                             <Setter Property="Margin" Value="10 10 5 5" />
@@ -571,6 +621,7 @@
                             <Style.Setters>
                                 <Setter Property="Foreground" Value="{Binding Path=MarkdownCodeBlockForeground}" />
                                 <Setter Property="FontFamily" Value="楷体-简,娃娃体-简,苹方,苹方-简,Microsoft YaHei,Simsun,宋体-简" />
+                                <Setter Property="FontSize" Value="12"/>
                             </Style.Setters>
                         </Style>
                     
@@ -586,8 +637,8 @@
                             <Style.Setters>
                                 <Setter Property="Foreground" Value="{Binding Path=MarkdownQuoteForeground}" />
                                 <Setter Property="Background" Value="{Binding Path=MarkdownQuoteBackground}" />
-                                <Setter Property="CornerRadius" Value="2" />
-                                <Setter Property="Padding" Value="2" />
+                                <Setter Property="CornerRadius" Value="5" />
+                                <Setter Property="Padding" Value="5 2 5 2" />
                                 <!-- <Setter Property="MonospaceFontFamily" Value="苹方,苹方-简,Microsoft YaHei,Simsun,宋体-简" /> -->
                                 <Setter Property="MonospaceFontFamily" Value="楷体-简,娃娃体-简,苹方,苹方-简,Microsoft YaHei,Simsun,宋体-简" />
                                 <Setter Property="FontWeight" Value="300" />
@@ -635,6 +686,8 @@
                 </avalonia:MarkdownScrollViewer>
                 <!-- </StackPanel> -->
             </Grid>
+            
+            <!--  底部提示 -->
             <StackPanel Classes="infoBar" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                 <Label Foreground="black" Padding="5" Name="infoBar">启动完成</Label>
             </StackPanel>

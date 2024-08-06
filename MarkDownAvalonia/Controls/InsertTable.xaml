@@ -1,0 +1,84 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="420" d:DesignHeight="360"
+        x:Class="MarkDownAvalonia.Controls.InsertTable"
+        Title="Setting" Background="white" SystemDecorations="BorderOnly" WindowStartupLocation="CenterOwner">
+    <Window.Styles>
+        <Style Selector="Button.tab">
+            <Setter Property="Background" Value="#303030" />
+            <Setter Property="Foreground" Value="white" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        <Style Selector="TextBox.input">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="silver" />
+        </Style>
+    </Window.Styles>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                <Border HorizontalAlignment="Center" BorderThickness="1" BorderBrush="black" Width="30" Height="30"
+                        CornerRadius="15" Margin="10 5" Background="Black" >
+                    <PathIcon Foreground="White" Margin="5"
+                              Data="M670.4 329.344L512 487.744 353.6 329.344a31.936 31.936 0 0 0-25.344-9.216l-2.56 0.384a32 32 0 0 0-37.76 31.488l0.064 320a32 32 0 0 0 64 0l-0.064-253.76 137.408 137.408a32 32 0 0 0 40.832 3.712l4.48-3.712L672 418.24V672a32 32 0 1 0 64 0v-320A32 32 0 0 0 704 320l-5.76 0.512-2.496-0.384a31.936 31.936 0 0 0-25.344 9.216z" />
+                </Border>
+                <Label Name="title" VerticalAlignment="Center" Foreground="White" FontSize="16">Create Table</Label>
+            </StackPanel>
+            <Button Grid.Column="2" Width="30" Height="30" Background="#C75049" BorderThickness="0" Margin="10 0"
+                    Click="CloseWindow">
+                <PathIcon Foreground="white"
+                          Data="M1023.997 114.97 911.408 2.388 516.149 397.629 118.5 0 5.91 112.585l397.649 397.629L7.107 906.648l112.587 112.59 396.454-396.439 395.259 395.249 112.59-112.59L628.738 510.214 1023.997 114.97z" />
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1" Name="centerArea" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <PathIcon Foreground="Black"
+                      Data="M971.349393 22.078683a28.881582 28.881582 0 0 1 30.571852 30.645342V235.199768H22.078685V52.724025A28.955072 28.955072 0 0 1 52.724027 22.078683h918.625366 M1001.921245 257.246777H22.078685a22.047009 22.047009 0 0 1-22.047009-22.047009V52.724025A50.92859 50.92859 0 0 1 52.724027 0.031674h918.625366a50.92859 50.92859 0 0 1 52.618861 52.692351V235.199768a22.047009 22.047009 0 0 1-22.047009 22.047009zM44.125694 213.152759h935.748543V52.724025c0-6.173162-2.351681-8.598333-8.524844-8.598333h-918.625366C46.550865 44.125692 44.125694 46.550863 44.125694 52.724025z M1001.921245 405.476166v213.121085H22.078685v-213.121085h979.84256 M1001.921245 640.64426H22.078685a22.047009 22.047009 0 0 1-22.047009-22.047009v-213.121085a22.047009 22.047009 0 0 1 22.047009-22.047009h979.84256a22.047009 22.047009 0 0 1 22.047009 22.047009v213.121085a22.047009 22.047009 0 0 1-22.047009 22.047009zM44.125694 596.550242h935.748543v-169.027067H44.125694z M1001.921245 788.800159v182.549232a28.881582 28.881582 0 0 1-30.571852 30.571853h-918.625366A28.881582 28.881582 0 0 1 22.078685 971.349391v-182.549232h979.84256 M971.349393 1023.968252h-918.625366A50.92859 50.92859 0 0 1 0.031676 971.349391v-182.549232a22.047009 22.047009 0 0 1 22.047009-22.047009h979.84256a22.047009 22.047009 0 0 1 22.047009 22.047009v182.549232a50.8551 50.8551 0 0 1-52.618861 52.618861zM44.125694 810.847167v160.502224c0 6.173162 2.425171 8.524843 8.598333 8.524844h918.625366c6.173162 0 8.524843-2.351681 8.524844-8.524844v-160.502224z"
+                      Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" />
+
+            <TextBox Name="rowsTbx" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Foreground="black"
+                     Classes="input" MaxHeight="24"
+                     VerticalAlignment="Center" Watermark="type here project git address" />
+
+            <PathIcon Foreground="Black"
+                      Data="M1001.921245 971.349391a28.881582 28.881582 0 0 1-30.571852 30.571853h-182.549232V22.078683h182.549232a28.881582 28.881582 0 0 1 30.571852 30.645342v918.625366 M971.349393 1023.968252h-182.549232a22.047009 22.047009 0 0 1-22.047009-22.047008V22.078683a22.047009 22.047009 0 0 1 22.047009-22.047009h182.549232a50.92859 50.92859 0 0 1 52.618861 52.692351v918.625366a50.8551 50.8551 0 0 1-52.618861 52.618861z m-160.502224-44.094017h160.502224c6.173162 0 8.524843-2.351681 8.524844-8.524844v-918.625366c0-6.173162-2.351681-8.598333-8.524844-8.598333h-160.502224z M618.597253 1001.921244h-213.121085V22.078683h213.121085v979.842561 M618.597253 1023.968252h-213.121085a22.047009 22.047009 0 0 1-22.047009-22.047008V22.078683a22.047009 22.047009 0 0 1 22.047009-22.047009h213.121085a22.047009 22.047009 0 0 1 22.047008 22.047009v979.842561a22.047009 22.047009 0 0 1-22.047008 22.047008z m-191.074076-44.094017h169.027067V44.125692h-169.027067z M235.19977 1001.921244H52.724027A28.881582 28.881582 0 0 1 22.078685 971.349391v-918.625366A28.955072 28.955072 0 0 1 52.724027 22.078683H235.19977v979.842561 M235.19977 1023.968252H52.724027A50.92859 50.92859 0 0 1 0.031676 971.349391v-918.625366A50.92859 50.92859 0 0 1 52.724027 0.031674H235.19977a22.047009 22.047009 0 0 1 22.047009 22.047009v979.842561a22.047009 22.047009 0 0 1-22.047009 22.047008zM52.724027 44.125692C46.550865 44.125692 44.125694 46.550863 44.125694 52.724025v918.625366c0 6.173162 2.425171 8.524843 8.598333 8.524844H213.152761V44.125692z"
+                      Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" />
+
+            <TextBox Name="colsTbx" Classes="input" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" Foreground="black" MaxHeight="24"
+                     VerticalAlignment="Center"
+                     Watermark="type here git username" />
+            
+            <Button Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" Classes="tab" Content="Confirm" Click="Confirm" />
+
+        </Grid>
+    </Grid>
+</Window>

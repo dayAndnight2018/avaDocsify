@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
@@ -222,6 +223,30 @@ namespace MarkDownAvalonia.Data
                     sw.Flush();
                 }
             }
+        }
+
+        public static void copyFile(string srcDir,string destDir)
+        {
+            if (!Directory.Exists(destDir))//若目标文件夹不存在
+            {
+                string newPath;
+                FileInfo fileInfo;
+                Directory.CreateDirectory(destDir);//创建目标文件夹                                                  
+                string[] files = Directory.GetFiles(srcDir);//获取源文件夹中的所有文件完整路径
+                foreach (string path in files)          //遍历文件     
+                {
+                    fileInfo = new FileInfo(path);
+                    newPath = Path.Combine(destDir, fileInfo.Name);
+                    File.Copy(path, newPath, true);
+                }
+                string[] dirs = Directory.GetDirectories(srcDir);
+                foreach (string path in dirs)        //遍历文件夹
+                {
+                    DirectoryInfo directory = new DirectoryInfo(path);
+                    string newDir = Path.Combine(destDir, directory.Name);
+                    copyFile(path, newDir);
+                }
+            }          
         }
 
         /// <summary>

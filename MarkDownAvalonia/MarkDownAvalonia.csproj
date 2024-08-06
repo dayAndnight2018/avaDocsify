@@ -35,7 +35,9 @@
         <PackageReference Include="Citrus.Avalonia" Version="1.6.1" />
         <PackageReference Include="Markdown.Avalonia" Version="11.0.2" />
         <PackageReference Include="Material.Avalonia" Version="3.0.0.36-nightly" />
+        <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
         <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+        <PackageReference Include="SkiaSharp" Version="2.88.3" />
     </ItemGroup>
     <ItemGroup>
       <None Remove="img.png" />
@@ -45,6 +47,23 @@
     <ItemGroup>
       <AvaloniaResource Include="Assets\**" />
     </ItemGroup>
+    <ItemGroup>
+      <None Include="template\css\**">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+    <ItemGroup>
+      <None Include="template\js\**">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="template\font\**">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
     <ItemGroup>
       <None Remove="config.json" />
       <Content Include="config.json">
@@ -63,6 +82,9 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
       <None Remove="template.html" />
+      <EmbeddedResource Include="preview.html">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
       <EmbeddedResource Include="template.html">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>

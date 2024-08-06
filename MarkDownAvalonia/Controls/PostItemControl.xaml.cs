@@ -149,12 +149,12 @@ namespace MarkDownAvalonia.Controls
         /// <summary>
         /// stop timer and remove handler
         /// </summary>
-        public void RemoveHandlers()
+        public void RemoveHandlers(bool saveNow = true)
         {
             Background = itemPanelBackground;
             Foreground = itemPanelForeground;
             this.seleted = false;
-            AutoSaveHolder.relase(this);
+            AutoSaveHolder.relase(this, saveNow);
         }
 
         /// <summary>

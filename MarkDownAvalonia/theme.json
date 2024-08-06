@@ -15,7 +15,7 @@
   "itemPanelForeground": "Silver",
   "itemPanelBackground": "#312f2f",
   "itemPanelFocusForeground": "White",
-  "itemPanelFocusBackground": "#1685ED",
+  "itemPanelFocusBackground": "#42b983",
   
   "editorPanelBackground": "#FEF6E1",
   "editorPanelForeground": "Black",
@@ -28,17 +28,17 @@
   "markdownUrlHoverForeground": "#6795b5",
   "markdownLineForeground": "#DDD",
 
-  "markdownH1Foreground": "#1685ED",
+  "markdownH1Foreground": "#05AA05",
   "markdownH1Background": "TransParent",
-  "markdownH2Foreground": "#1685ED",
+  "markdownH2Foreground": "#05AA05",
   "markdownH2Background": "TransParent",
-  "markdownH3Foreground": "#1685ED",
+  "markdownH3Foreground": "#05AA05",
   "markdownH3Background": "TransParent",
-  "markdownH4Foreground": "#1685ED",
+  "markdownH4Foreground": "#05AA05",
   "markdownH4Background": "TransParent",
-  "markdownH5Foreground": "#1685ED",
+  "markdownH5Foreground": "#05AA05",
   "markdownH5Background": "TransParent",
-  "markdownH6Foreground": "#1685ED",
+  "markdownH6Foreground": "#05AA05",
   "markdownH6Background": "TransParent",
 
   "markdownTableBorderBrush": "Silver",
@@ -49,14 +49,14 @@
   "markdownTableEvenRowForeground": "Black",
   "markdownTableEvenRowBackground": "#F7F7F7",
   
-  "markdownQuoteForeground": "#c7254e",
-  "markdownQuoteBackground": "#f9f2f4",
+  "markdownQuoteForeground": "white",
+  "markdownQuoteBackground": "#42b983",
 
-  "markdownCodeBlockForeground": "black",
-  "markdownCodeBlockBackground": "#F2F2F2",
+  "markdownCodeBlockForeground": "white",
+  "markdownCodeBlockBackground": "#413e3f",
   
-  "markdownBlockQuoteBackground": "#EEF0F4",
-  "markdownBlockQuoteHeadBrush": "#DDDFE4",
+  "markdownBlockQuoteBackground": "LightGreen",
+  "markdownBlockQuoteHeadBrush": "#42b983",
   
   "markdownNoteForeground": "White",
   "markdownNoteBackground": "#C75049",

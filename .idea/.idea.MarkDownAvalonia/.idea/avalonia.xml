@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="MarkDownAvalonia/Controls/ErrorMessageBox.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/Controls/FindWindow.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/Controls/InfoMessageBox.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/Controls/InsertTable.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/Controls/PostItemControl.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/Controls/ProjectItemControl.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/Controls/ProjectWindow.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/Controls/PushWindow.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/Controls/SettingWindow.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/Controls/SuccessMessageBox.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/Controls/WarningMessageBox.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/EntryApp.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+        <entry key="MarkDownAvalonia/MainWindow.xaml" value="MarkDownAvalonia/MarkDownAvalonia.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

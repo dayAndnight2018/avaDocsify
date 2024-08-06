@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -10,12 +11,17 @@ namespace MarkDownAvalonia.Data
     {
         // 项目配置文件
         private const string APPLICATION_CONFIG_FILE_NAME = "config.json";
+        
+        // 项目配置文件
+        private const string PROJECT_CONFIG_FILE_NAME = "projects.json";
 
         // 主题配置文件
         private const string THEME_CONFIG_FILE_NAME = "theme.json";
 
         // 主页的模板文件
         private const string HTML_TEMPLATE_FILE_NAME = "template.html";
+        
+        private const string PREVIEW_HTML_TEMPLATE_FILE_NAME = "preview.html";
 
         private const string INDEX_HTML_FILE_NAME = "index.html";
 
@@ -83,6 +89,12 @@ namespace MarkDownAvalonia.Data
             return sln;
         }
 
+        public static void publishPreview()
+        {
+            
+            GitUtils.MakeFileWithTemplate(Path.Combine(CommonData.config.PostDirectory, PREVIEW_HTML_TEMPLATE_FILE_NAME), PREVIEW_HTML_TEMPLATE_FILE_NAME);
+        }
+
         /// <summary>
         /// load sln file content
         /// </summary>
@@ -113,6 +125,30 @@ namespace MarkDownAvalonia.Data
                 return config;
             }
         }
+        
+        public static List<Configuration> LoadProjectConfig()
+        {
+            if (!File.Exists(PROJECT_CONFIG_FILE_NAME))
+                return null;
+
+            using (var sr = new StreamReader(PROJECT_CONFIG_FILE_NAME))
+            {
+                return JsonConvert.DeserializeObject<List<Configuration>>(sr.ReadToEnd());;
+            }
+        }
+        
+        public static void saveProjectConfig(List<Configuration> config)
+        {
+            if (config != null)
+            {
+                using (StreamWriter sw = new StreamWriter(PROJECT_CONFIG_FILE_NAME))
+                {
+                    sw.Write(JsonConvert.SerializeObject(config));
+                    sw.Flush();
+                }
+            }
+        }
+        
 
         /// <summary>
         /// load theme config from config file
